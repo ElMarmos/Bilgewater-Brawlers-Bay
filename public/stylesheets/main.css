@@ -2,48 +2,83 @@ html {
   height: 100%;
 }
 html body {
-  -moz-flex-direction: column;
-  -webkit-flex-direction: column;
-  background-color: bgcolor;
-  color: gris;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  flex-direction: column;
+  background: url("../images/background.jpg") center center no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   font-family: Muli;
-  font-size: 16px;
   min-height: 100%;
-  padding-bottom: 60px;
+  padding: 1px 0;
   position: relative;
 }
-html body .main-container {
-  -moz-box-align: center;
-  -moz-box-pack: center;
-  -moz-flex: 1;
-  -ms-flex: 1;
-  -ms-flex-align: center;
-  -ms-flex-pack: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -webkit-box-pack: center;
-  -webkit-flex: 1;
-  -webkit-justify-content: center;
-  align-items: center;
-  background-color: azul1;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  flex: 1;
-  font-size: 16px;
-  margin-top: 80px;
+html body .overlay {
+  background-color: #000;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0.4;
+  z-index: -1;
 }
-html body .main-container .flex-container {
-  align-self: center;
-  height: 100%;
+html body .top-menu {
+  background-color: rgba(0,0,0,0.5);
+  padding: 15px;
+  z-index: 1000;
+}
+@media screen and (max-width: 991px) {
+  html body .top-menu {
+    text-align: center;
+  }
+}
+html body .top-menu .brand {
+  display: inline-block;
+}
+html body .top-menu .brand .logo {
+  height: 80px;
+}
+html body .top-menu .tabs {
+  display: inline-block;
+  float: right;
+}
+html body .top-menu .tabs .tab {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 80px;
+  padding: 0 10px;
+  transition: color 0.6s ease;
+}
+html body .top-menu .tabs .tab:hover {
+  color: #e7b53d;
+}
+html body .top-menu .tabs .tab.selected {
+  color: #e7b53d;
+}
+html body .footer {
+  background-color: rgba(0,0,0,0.2);
+  bottom: 0;
+  color: #fff;
+  font-size: 12px;
+  padding: 15px 0;
+  position: absolute;
   width: 100%;
-  margin: 30px 0;
+}
+html body .footer .container {
+  line-height: 30px;
+}
+html body .footer .container .text {
+  display: inline-block;
+  margin: 0;
+}
+@font-face {
+  font-family: Muli;
+  font-weight: normal;
+  src: url("../fonts/Muli.ttf");
+}
+@font-face {
+  font-family: Muli;
+  font-weight: bold;
+  src: url("../fonts/Muli-Bold.ttf");
 }
