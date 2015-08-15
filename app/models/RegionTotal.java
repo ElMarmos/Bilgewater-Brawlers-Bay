@@ -5,11 +5,18 @@ import play.data.validation.Unique;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
 import java.util.*;
 
 @Entity
 public class RegionTotal extends Model {
     
+	/**
+	 * Region id
+	 */
+	@Unique
+	public String region_id;
+	
 	/**
 	 * Region name
 	 */
@@ -80,4 +87,42 @@ public class RegionTotal extends Model {
 	 * Average game time in the region
 	 */
 	public int average_game_time;
+	
+	/**
+	 * Average krakens spent in the region
+	 */
+	public int average_krakens;
+	
+	/**
+	 * Average dragons killed in the region
+	 */
+	public int average_dragons;
+	
+	/**
+	 * Average barons killed in the region
+	 */
+	public int average_barons;
+	
+	/**
+	 * Brawlers statics
+	 */
+	@OneToOne(mappedBy="regionTotal", cascade=CascadeType.ALL)
+	public BrawlersHired brawlersHireds;
+	
+	/**
+	 * List of champions items stats
+	 */
+	@OneToMany(mappedBy="regionTotal", cascade=CascadeType.ALL)
+	public List<BlackMarketChampion> blackMarketChampions;
+	
+	/**
+	 * List of champions stats
+	 */
+	@OneToMany(mappedBy="regionTotal", cascade=CascadeType.ALL)
+	public List<Champion> champions;	
+	
+	public RegionTotal(){
+		blackMarketChampions = new ArrayList<>();
+		champions = new ArrayList<>();
+	}
 }
