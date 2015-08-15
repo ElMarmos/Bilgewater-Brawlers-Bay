@@ -13,7 +13,6 @@
 </head>
 <body>
 	<div class="overlay"></div>
-	#{doLayout /}
 
 	<div class="top-menu">
 		<div class="container">
@@ -21,15 +20,17 @@
 				<a href="@{Application.index}"><img src="@{'public/images/logo.png'}" class="logo"></a>
 			</div>
 			<div class="tabs">
-				<a href="#" class="tab selected">Home</a>
-				<a href="#" class="tab">Regional Stats</a>
-				<a href="#" class="tab">Champions</a>
-				<a href="#" class="tab">Items</a>
-				<a href="#" class="tab">Brawlers</a>
-				<a href="#" class="tab">About</a>
+				<a href="@{Application.index}" class="tab tab1">Home</a>
+				<a href="#" class="tab tab2">Regional Stats</a>
+				<a href="#" class="tab tab3">Champions</a>
+				<a href="#" class="tab tab4">Items</a>
+				<a href="#" class="tab tab5">Brawlers</a>
+				<a href="#" class="tab tab6">About</a>
 			</div>
 		</div>
 	</div>
+
+	#{doLayout /}
 
 	<footer class="footer">
 		<div class="container">
