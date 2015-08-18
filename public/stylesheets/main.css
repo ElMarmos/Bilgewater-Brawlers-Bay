@@ -5,6 +5,7 @@ html body {
   background: url("../images/background.jpg") center center no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  color: #fff;
   font-family: Muli;
   min-height: 100%;
   padding: 1px 0;
@@ -14,14 +15,36 @@ html body .overlay {
   background-color: #000;
   bottom: 0;
   left: 0;
+  opacity: 0.4;
   position: absolute;
   right: 0;
   top: 0;
-  opacity: 0.4;
   z-index: -1;
 }
+html body .divider {
+  background: url("../images/divider.png") center no-repeat;
+  height: 120px;
+}
+html body .view-title {
+  text-align: center;
+}
+html body .view-title .title-text {
+  font-weight: bold;
+  margin-top: 0;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+html body .view-title .legend {
+  font-size: 18px;
+  margin: 0;
+}
+html body .view-title .legend span {
+  text-shadow: 0 0 50px #e7b53d;
+  color: #e7b53d;
+}
 html body .top-menu {
-  background-color: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.5);
+  margin-bottom: 40px;
   padding: 15px;
   z-index: 1000;
 }
@@ -33,7 +56,10 @@ html body .top-menu {
 html body .top-menu .brand {
   display: inline-block;
 }
-html body .top-menu .brand .logo {
+html body .top-menu .brand a {
+  display: inline-block;
+}
+html body .top-menu .brand a .logo {
   height: 80px;
 }
 html body .top-menu .tabs {
@@ -56,10 +82,61 @@ html body .top-menu .tabs .tab:hover {
 html body .top-menu .tabs .tab.selected {
   color: #e7b53d;
 }
-html body .footer {
-  background-color: rgba(0,0,0,0.2);
+html body .app-champions-index {
+  margin-bottom: 129px;
+}
+html body .app-champions-index .champions-grid {
+  font-size: 0;
+  text-align: center;
+}
+html body .app-champions-index .champions-grid .champion {
+  -webkit-filter: grayscale(60%);
+  display: inline-block !important;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  margin-bottom: 0px;
+}
+html body .app-champions-index .champions-grid .champion.hidden {
+  opacity: 0;
+}
+html body .app-champions-index .champions-grid .champion.visible {
+  opacity: 1;
+}
+html body .app-champions-index .champions-grid .champion:hover {
+  -webkit-filter: grayscale(0);
+}
+html body .app-champions-index .champions-grid .champion:hover .champion-img {
+  background-position: center 25%;
+  background-size: auto 300px;
+}
+html body .app-champions-index .champions-grid .champion:hover .champion-img .name {
+  opacity: 1;
+}
+html body .app-champions-index .champions-grid .champion .champion-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 225px;
+  height: 200px;
+  position: relative;
+  transition: all 0.4s ease;
+  width: 100px;
+}
+html body .app-champions-index .champions-grid .champion .champion-img .name {
+  background: linear-gradient(transparent, #000 90%);
   bottom: 0;
-  color: #fff;
+  color: #e7b53d;
+  font-size: 14px;
+  height: 100px;
+  line-height: 172px;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.4s ease;
+  width: 100%;
+}
+html body .footer {
+  background-color: rgba(255,255,255,0.05);
+  bottom: 0;
   font-size: 12px;
   padding: 15px 0;
   position: absolute;
