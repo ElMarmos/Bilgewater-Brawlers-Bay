@@ -1,0 +1,128 @@
+#{extends 'main.html' /}
+
+<div class="loading">
+	<div class="centered">
+		<img class="spinner" src="@{'public/images/spinner.svg'}">
+	</div>
+</div>
+
+<div class="app-champions-index">
+	<div class="container">
+		
+		<div class="view-title">
+			<h1 class="title-text">Champion Stats</h1>
+			<p class="legend">Here you can <span>select a champion</span> to see stats related to the champion, items of the Black Market he bought, pick rate, win rate and more.</p>
+		</div>
+
+		<a name="aqui"></a>
+
+		<div class="divider"></div>
+		
+		<div class="championResume">
+			<div class="header">
+				<div id="crImg">
+					<div class="animation"></div>
+				</div>
+				<h1 id="crName"></h1>
+			</div>
+			<div class="content">
+				<div class="col-sm-6">
+					<div class="brawCont">
+						<img src="@{'/public/images/3611.png'}" class="graphIconBraw one">
+						<img src="@{'/public/images/3612.png'}" class="graphIconBraw two">
+						<img src="@{'/public/images/3613.png'}" class="graphIconBraw three">
+						<img src="@{'/public/images/3614.png'}" class="graphIconBraw four">
+						<canvas id="brawlersChart" width="200px" height="200px"></canvas>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					
+				</div>
+			</div>
+		</div>
+
+		<div class="divider di2"></div>
+		
+		<div class="champions-grid">
+			#{list items:campeones, as: 'campeon'}
+			<a class="champion" val="${campeon.id}" href="#">
+				<div class="champion-img" style="background-image: url('${campeon.loading}');">
+					<div class="name">${campeon.name}</div>
+				</div>
+			</a>
+			#{/list}
+		</div>
+	</div>
+</div>
+
+<script>
+
+	$('.championResume').hide();
+	$('.di2').hide();
+
+	function scrollToAnchor(aid){
+		var aTag = $("a[name='"+ aid +"']");
+		$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+	}
+
+	$('.champion').click(function(event) {
+		event.preventDefault();
+		scrollToAnchor('aqui');
+		var champ = $(this).attr('val');
+		var name = $("div > div", this).text();
+		$('.championResume').slideDown();
+		$('.di2').slideDown();
+
+		$.ajax({
+			url: '@{Champions.getChampionResume}',
+			type: 'POST',
+			data: {id: champ},
+		})
+		.done(function(data) {
+			$('#crName').text(name);
+			$('#crImg').css({
+				'background': 'url('+data+')',
+				'background-position': 'center',
+				'background-size': '90px 90px'
+			});;
+			setBrawlersGraph();
+		});
+		
+	});
+
+	function setBrawlersGraph(){
+		var data = {
+			labels: ["", "", "", ""],
+			datasets: [
+			{
+				label: "Brawlers",
+				fillColor: "rgba(231,181,61,0.5)",
+				strokeColor: "rgba(244,201,99,1)",
+				data: [8, 3, 9, 2]
+			}
+			]
+		};
+
+		var ctx = $("#brawlersChart").get(0).getContext("2d");
+		var myRadarChart = new Chart(ctx).Radar(data, {
+			pointDot: false,
+			scaleLineColor: "#fff",
+			pointLabelFontColor: "#fff",
+			angleLineColor: "#fff",
+			tooltipFillColor: "rgba(0,0,0,1)"
+		});
+	}
+
+	$(window).load(function() {
+		$('.loading').slideUp('600');
+	});
+
+	(function(){
+		$('.tab3').addClass('selected');
+
+		$('.champion').addClass("hidden").viewportChecker({
+			classToAdd: 'visible animated fadeIn',
+			offset: 100
+		});
+	})();
+</script>
