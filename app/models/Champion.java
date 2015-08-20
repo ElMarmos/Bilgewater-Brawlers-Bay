@@ -33,7 +33,7 @@ public class Champion extends Model {
 	public int assists;
 	
 	/**
-	 * Average wins with the champion
+	 * Wins with the champion
 	 */
 	public int wins;
 	

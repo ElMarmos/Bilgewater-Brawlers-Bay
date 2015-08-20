@@ -10,8 +10,11 @@
 	<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
 	<script src="@{'/public/javascripts/jquery-1.11.3.js'}" type="text/javascript"></script>
 	<script type="text/javascript" src="@{'/public/javascripts/bootstrap.min.js'}"></script>
+	<script type="text/javascript" src="@{'/public/javascripts/jquery-viewportchecker.js'}"></script>
+	<script type="text/javascript" src="@{'/public/javascripts/Chart.min.js'}"></script>
 </head>
 <body>
+
 	<div class="overlay"></div>
 
 	<div class="top-menu">
@@ -22,7 +25,7 @@
 			<div class="tabs">
 				<a href="@{Application.index}" class="tab tab1">Home</a>
 				<a href="#" class="tab tab2">Regional Stats</a>
-				<a href="#" class="tab tab3">Champions</a>
+				<a href="@{Champions.index}" class="tab tab3">Champions</a>
 				<a href="#" class="tab tab4">Items</a>
 				<a href="#" class="tab tab5">Brawlers</a>
 				<a href="#" class="tab tab6">About</a>
