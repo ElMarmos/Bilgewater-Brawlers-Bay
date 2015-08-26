@@ -1,5 +1,30 @@
 #{extends 'main.html' /}
 
+<div class="app-index">
+	<div class="container">
+		<div class="view-title">
+			<h1 class="title-text">Bilgewater Brawlers Bay</h1>
+			<p class="legend">Welcome summoner to <span>Bilgewater Brawlers Bay</span>, here you will find stats from every <span>Region</span> where the event took place, the most wanted <span>Champions</span> and stats about them. Head over to the <span>Black Market</span> and find out which items were the most buyed and stats related to them. And last, you can go to the <span>Brawlers</span> bar and watch a ranking from strongest to weakest and some more data.<br>Have Fun!</p>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-offset-1 col-md-offset-0 col-sm-4 col-md-3">
+			<a class="indexOption" href="@{Regional.index}"><div class="iconbg"><img class="indexIcon" src="@{'public/images/icon1.png'}"></div><span class="indexIconText">Regional Stats</span></a>
+			</div>
+			<div class="col-sm-offset-2 col-md-offset-0 col-sm-4 col-md-3">
+				<a class="indexOption" href="@{Champions.index}"><div class="iconbg"><img class="indexIcon" src="@{'public/images/icon2.png'}"></div><span class="indexIconText">Champions</span></a>
+			</div>
+			<div class="col-sm-offset-1 col-md-offset-0 col-sm-4 col-md-3">
+				<a class="indexOption" href="@{Items.index}"><div class="iconbg"><img class="indexIcon" src="@{'public/images/icon3.png'}"></div><span class="indexIconText">Black Market</span></a>
+			</div>
+			<div class="col-sm-offset-2 col-md-offset-0 col-sm-4 col-md-3">
+				<a class="indexOption" href="@{Brawlers.index}"><div class="iconbg"><img class="indexIcon" src="@{'public/images/icon4.png'}"></div><span class="indexIconText">Brawlers</span></a>
+			</div>
+		</div>
+
+	</div>
+</div>
+
 <script>
 	$('.tab1').addClass('selected');
 </script>
