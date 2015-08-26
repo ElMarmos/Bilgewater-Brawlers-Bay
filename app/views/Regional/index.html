@@ -1,0 +1,146 @@
+#{extends 'main.html' /}
+
+<div class="app-regional-index">
+	<div class="container">
+		<div class="view-title">
+			<h1 class="title-text">Regional Stats</h1>
+			<p class="legend">Here you can <span>select a champion</span> to see stats related to the champion, items of the Black Market he bought, pick rate, win rate and more.</p>
+		</div>
+
+		<div class="divider"></div>
+
+		<div class="worldStats">
+			<div class="worldCanvasHolder">
+				<canvas class="barChart" id="worldChart"></canvas>
+			</div>
+		</div>
+
+		<div class="divider"></div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="regionalResumeTable">
+					<div class="rrt-header">
+						<h3>LAN</h3>
+					</div>
+					<div class="rrt-body">
+						<table>
+							<tr>
+								<td class="label">Avg Kills</td>
+								<td class="info">500</td>
+								<td class="label">Longest Game Time</td>
+								<td class="info">500</td>
+							</tr>
+							<tr>
+								<td class="label">Avg Deaths</td>
+								<td class="info">500</td>
+								<td class="label">Avg Double Kills</td>
+								<td class="info">500</td>
+							</tr>
+							<tr>
+								<td class="label">Avg Assists</td>
+								<td class="info">500</td>
+								<td class="label">Avg Triple Kills</td>
+								<td class="info">500</td>
+							</tr>
+							<tr>
+								<td class="label">Avg Minions Killed</td>
+								<td class="info">500</td>
+								<td class="label">Avg Quadra Kills</td>
+								<td class="info">500</td>
+							</tr>
+							<tr>
+								<td class="label">Avg Neutral Monsters Killed</td>
+								<td class="info">500</td>
+								<td class="label">Avg Penta Kills</td>
+								<td class="info">500</td>
+							</tr>
+							<tr>
+								<td class="label">Avg Gold</td>
+								<td class="info">500</td>
+								<td class="label">Avg Turrets Destroyed</td>
+								<td class="info">500</td>
+							</tr>
+							<tr>
+								<td class="label">Avg Krakens Spended</td>
+								<td class="info">500</td>
+								<td class="label">Avg Dragon Kills</td>
+								<td class="info">500</td>
+							</tr>
+							<tr>
+								<td class="label">Avg Game Time</td>
+								<td class="info">500</td>
+								<td class="label">Avg Baron Kills</td>
+								<td class="info">500</td>
+							</tr>
+						</table>
+						<div class="rrt-divider"></div>
+						<h4>Compared to the World</h4>
+						<div class="canvasHolder">
+							<canvas class="radarChart" id="lanChart"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists", "Avg Krakens", "Avg Dragons", "Avg Barons"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			pointColor: "rgba(141,11,29,1)",
+			pointStrokeColor: "#fff",
+			pointHighlightFill: "#fff",
+			pointHighlightStroke: "rgba(220,220,220,1)",
+			data: [65, 59, 90, 81, 56, 55]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			pointColor: "rgba(232,165,73,1)",
+			pointStrokeColor: "#fff",
+			pointHighlightFill: "#fff",
+			pointHighlightStroke: "rgba(151,187,205,1)",
+			data: [28, 48, 40, 19, 96, 27]
+		}
+		]
+	};
+
+	var ctx = $("#lanChart").get(0).getContext("2d");
+	var radarChart = new Chart(ctx).Radar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		pointLabelFontColor : "#fff"
+	});
+
+	var dataBar = {
+		labels: ["WORLD", "BR", "EUNE", "EUW", "KR", "LAN", "LAS", "NA", "OCE", "TR", "RU"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,.8)",
+			strokeColor: "rgba(141,11,29,.8)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,.8)",
+			data: [65, 30, 20, 30, 20, 30, 20, 50, 10, 20, 11]
+		}
+		]
+	};
+	var barChart = $("#worldChart").get(0).getContext("2d");
+	var myBarChart = new Chart(barChart).Bar(dataBar, {
+		scaleFontColor: "#fff",
+		scaleLineColor: "rgba(255,255,255,0.8)"
+	});
+
+
+	$('.tab2').addClass('selected');
+
+
+</script>
