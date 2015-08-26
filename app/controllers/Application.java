@@ -1,15 +1,24 @@
 package controllers;
 
 import play.*;
+import play.db.jpa.JPA;
+import play.db.jpa.NoTransaction;
 import play.libs.WS;
 import play.libs.WS.HttpResponse;
 import play.mvc.*;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.*;
+
+import javax.swing.JPanel;
+
+import org.apache.commons.io.monitor.FileEntry;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -17,58 +26,95 @@ import com.google.gson.JsonParser;
 
 import models.*;
 
+
 public class Application extends Controller {
+
+	private static long partidaLarga = 0;
 
 	public static void index() {
 		populateDb();
 		render();
 	}
 
+	public static String guardar() {
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(
+					"./LAN/LAN.json"));
+			String line = br.readLine();
+			PrintWriter printWriter = new PrintWriter(new File(
+					"./LAN/LAN_ALL.json"));
+			int i = 0;
+			while (line != null) {
+				System.out.println("van " + i + " partida " + line);
+				try {
+					BufferedReader partida = new BufferedReader(new FileReader(
+							"./LAN/" + line + ".json"));
+					String homePage = partida.readLine();
+					printWriter.println(homePage);
+					line = br.readLine();
+					partida.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if(i==300){
+					break;
+				}
+				i++;
+			}
+			br.close();
+			printWriter.close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return "";
+	}
+
 	public static String populateDb() {
 
 		try {
-			RegionTotal r = new RegionTotal();
-			r.region = "LAN";
-			r.region_id = "LA1";
-			r.save();
-			System.out.println("save");
-
+			RegionTotal r = RegionTotal.find("byRegion_id", "TR1").first();
+			if(r==null){
+				r = new RegionTotal();
+				r.region_id = "TR1";
+				r.region = "TR";
+				r.save();
+			}
 			BufferedReader br = new BufferedReader(new FileReader(
-					"./public/LAN.json"));
-			String line;
+					"./TR/TR.json"));
+			String line = br.readLine();
 			int i = 0;
-			while ((line = br.readLine()) != null) {
-				System.out.println("van " + i);
-				setMatch(line, r);
+			while (line != null) {
+				System.out.println("van " + i + " partida "+ line);
+				try {
+					BufferedReader partida = new BufferedReader(new FileReader(
+							"./TR/" + line + ".json"));
+					String homePage = partida.readLine();
+					setMatch(homePage, r);
+					line = br.readLine();
+					partida.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				i++;
 			}
-
+			r.longest_game_time = partidaLarga;
+			r.save();
 			br.close();
 			return "";
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return null;
-
 	}
 
-	public static String setMatch(String matchId, RegionTotal r) {
-		HttpResponse homePage = WS
-				.url("https://lan.api.pvp.net/api/lol/lan/v2.2/match/"
-						+ matchId
-						+ "?includeTimeline=true&api_key=c23d24ee-d074-4000-a7f0-4711741570c4")
-				.get();
+	public static String setMatch(String homePage, RegionTotal r) {
 		JsonParser parser = new JsonParser();
-		try {
-			Thread.sleep(1000); // 1000 milliseconds is one second.
-		} catch (InterruptedException ex) {
-			Thread.currentThread().interrupt();
-		}
-		// System.out.println(homePage.getString());
-		JsonObject obj = (JsonObject) parser.parse(homePage.getString());
+		JsonObject obj = (JsonObject) parser.parse(homePage);
 		setMatchAvg(obj, r);
 		setKrakensAvg(obj, r);
 		setBlackMarketChampion(obj, r);
@@ -76,7 +122,10 @@ public class Application extends Controller {
 	}
 
 	public static String setMatchAvg(JsonObject obj, RegionTotal r) {
-		double AvgDuration = obj.get("matchDuration").getAsDouble() / 100000;
+		double AvgDuration = obj.get("matchDuration").getAsDouble() / 10000;
+		if (obj.get("matchDuration").getAsLong() > partidaLarga) {
+			partidaLarga = obj.get("matchDuration").getAsLong();
+		}
 		double AvgTowerKills = 0;
 		double AvgKills = 0;
 		double AvgAssists = 0;
@@ -182,26 +231,27 @@ public class Application extends Controller {
 						if (itemId == 3611 || itemId == 3612 || itemId == 3613
 								|| itemId == 3614 || itemId == 3615
 								|| itemId == 3621 || itemId == 3624) {
-
-							r.average_krakens += 5 / 10000;
+							r.average_krakens += 0.0005;
 						}
 						if (itemId == 3616 || itemId == 3622 || itemId == 3625) {
 
-							r.average_krakens += 10 / 10000;
+							r.average_krakens += 0.001;
 						}
 						if (itemId == 3617 || itemId == 3623 || itemId == 3626) {
 
-							r.average_krakens += 20 / 10000;
+							r.average_krakens += 0.002;
 						}
 						if (itemId == 3611) {
-							BrawlersHired bh = BrawlersHired.find(
-									"byChampion_id",
-									championByParticipant.get(participantId))
+							BrawlersHired bh = BrawlersHired
+									.find("byChampion_idAndRegionTotal",
+											championByParticipant
+													.get(participantId), r)
 									.first();
 							if (bh == null) {
 								bh = new BrawlersHired();
 								bh.champion_id = championByParticipant
 										.get(participantId);
+								bh.regionTotal = r;
 							}
 							// Razorfin
 							bh.razorfins += 1;
@@ -218,14 +268,16 @@ public class Application extends Controller {
 							bh.save();
 						}
 						if (itemId == 3612) {
-							BrawlersHired bh = BrawlersHired.find(
-									"byChampion_id",
-									championByParticipant.get(participantId))
+							BrawlersHired bh = BrawlersHired
+									.find("byChampion_idAndRegionTotal",
+											championByParticipant
+													.get(participantId), r)
 									.first();
 							if (bh == null) {
 								bh = new BrawlersHired();
 								bh.champion_id = championByParticipant
 										.get(participantId);
+								bh.regionTotal = r;
 							}
 							// Ironback
 							bh.ironbacks += 1;
@@ -242,14 +294,16 @@ public class Application extends Controller {
 							bh.save();
 						}
 						if (itemId == 3613) {
-							BrawlersHired bh = BrawlersHired.find(
-									"byChampion_id",
-									championByParticipant.get(participantId))
+							BrawlersHired bh = BrawlersHired
+									.find("byChampion_idAndRegionTotal",
+											championByParticipant
+													.get(participantId), r)
 									.first();
 							if (bh == null) {
 								bh = new BrawlersHired();
 								bh.champion_id = championByParticipant
 										.get(participantId);
+								bh.regionTotal = r;
 							}
 							// Plundercrab
 							bh.plundercrabs += 1;
@@ -266,14 +320,16 @@ public class Application extends Controller {
 							bh.save();
 						}
 						if (itemId == 3614) {
-							BrawlersHired bh = BrawlersHired.find(
-									"byChampion_id",
-									championByParticipant.get(participantId))
+							BrawlersHired bh = BrawlersHired
+									.find("byChampion_idAndRegionTotal",
+											championByParticipant
+													.get(participantId), r)
 									.first();
 							if (bh == null) {
 								bh = new BrawlersHired();
 								bh.champion_id = championByParticipant
 										.get(participantId);
+								bh.regionTotal = r;
 							}
 							// Ocklepod
 							bh.ocklepods += 1;
@@ -288,7 +344,6 @@ public class Application extends Controller {
 							}
 							bh.save();
 						}
-
 					}
 				}
 			}
@@ -297,8 +352,9 @@ public class Application extends Controller {
 
 		return "";
 	}
-	
-	public static String setBlackMarketChampion(JsonObject obj, RegionTotal region) {
+
+	public static String setBlackMarketChampion(JsonObject obj,
+			RegionTotal region) {
 		int[] itemsIDs = new int[] { 3150, 3652, 3744, 3745, 3911, 3924, 3742,
 				3829, 3840, 3841, 3844, 3430, 3431, 3434, 3433 };
 
@@ -308,7 +364,7 @@ public class Application extends Controller {
 					.getAsInt();
 
 			BlackMarketChampion blackMarketChampion = BlackMarketChampion.find(
-					"byChampion_id", champId).first();
+					"byChampion_idAndRegionTotal", champId, region).first();
 
 			if (blackMarketChampion == null) {
 				blackMarketChampion = new BlackMarketChampion();
@@ -317,7 +373,8 @@ public class Application extends Controller {
 				blackMarketChampion.save();
 			}
 
-			Champion champion = Champion.find("byChampion_id", champId).first();
+			Champion champion = Champion.find("byChampion_idAndRegionTotal",
+					champId, region).first();
 
 			if (champion == null) {
 				champion = new Champion();
@@ -330,9 +387,9 @@ public class Application extends Controller {
 					.getAsJsonObject();
 			boolean winner = stats.get("winner").getAsBoolean();
 
-			champion.kills = stats.get("kills").getAsInt();
-			champion.deaths = stats.get("deaths").getAsInt();
-			champion.assists = stats.get("assists").getAsInt();
+			champion.kills += stats.get("kills").getAsInt();
+			champion.deaths += stats.get("deaths").getAsInt();
+			champion.assists += stats.get("assists").getAsInt();
 			champion.games++;
 
 			if (winner) {
