@@ -35,7 +35,7 @@ public class Champions extends Controller {
 				.first();
 		return cs.square;
 	}
-
+	
 	/**
 	 * Gets the ids, names and keys from all champions using the RG API, then
 	 * creates and stores the generated data in the database.
