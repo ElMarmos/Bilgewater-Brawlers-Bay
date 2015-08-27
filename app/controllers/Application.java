@@ -32,7 +32,6 @@ public class Application extends Controller {
 	private static long partidaLarga = 0;
 
 	public static void index() {
-		populateDb();
 		render();
 	}
 

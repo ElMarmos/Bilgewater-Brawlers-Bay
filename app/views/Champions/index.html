@@ -26,19 +26,19 @@
 				<h1 id="crName"></h1>
 				<div class="championStats">
 					<div class="stat">
-						Avg Kills: <span class="data">3</span>
+						Avg Kills: <span class="data" id="kills"></span>
 					</div>
 					<div class="stat">
-						Avg Deaths: <span class="data">3</span>
+						Avg Deaths: <span class="data" id="deaths"></span>
 					</div>
 					<div class="stat">
-						Avg Assists: <span class="data">3</span>
+						Avg Assists: <span class="data" id="assists"></span>
 					</div>
 					<div class="stat">
-						Win Rate: <span class="data">3</span>
+						Win Rate: <span class="data" id="win-rate"></span>
 					</div>
 					<div class="stat">
-						Play Rate: <span class="data">3</span>
+						Play Rate: <span class="data" id="play-rate"></span>
 					</div>
 				</div>
 			</div>
@@ -188,52 +188,60 @@
 
 	$('.champion').click(function(event) {
 		event.preventDefault();
-		scrollToAnchor('aqui');
+		
 		var champ = $(this).attr('val');
 		var name = $("div > div", this).text();
-		$('.championResume').slideDown();
-		$('.di2').slideDown();
-
+		
 		$.ajax({
 			url: '@{Champions.getChampionResume}',
 			type: 'POST',
 			data: {id: champ},
 		})
 		.done(function(data) {
+			var champ_data = JSON.parse(data);
 			$('#crName').text(name);
 			$('#crImg').css({
-				'background': 'url('+data+')',
+				'background': 'url('+champ_data.square+')',
 				'background-position': 'center',
 				'background-size': '90px 90px'
 			});;
-			setBrawlersGraphBuyRate();
-			setBrawlersGraphWinRate();
+			$('#kills').text(champ_data.kills);
+			$('#deaths').text(champ_data.deaths);
+			$('#assists').text(champ_data.assists);
+			$('#win-rate').text(champ_data.wins+'%');
+			$('#play-rate').text(champ_data.play+'%');
+			setBrawlersGraphBuyRate(champ_data.razorfins, champ_data.ironbacks, champ_data.plundercrabs, champ_data.ocklepods);
+			setBrawlersGraphWinRate(champ_data.razorfins_win,champ_data.ironbacks_win,champ_data.plundercrabs_win,champ_data.ocklepods_win);
 		});
+
+		scrollToAnchor('aqui');
+		$('.championResume').slideDown();
+		$('.di2').slideDown();
 
 	});
 
-	function setBrawlersGraphBuyRate(){
+	function setBrawlersGraphBuyRate(razorfins, ironbacks, plundercrabs, ocklepods){
 		var data = [
 		{
-			value: 300,
+			value: razorfins,
 			color:"#8D0B1D",
 			highlight: "#D1475A",
 			label: "Razorfins"
 		},
 		{
-			value: 50,
+			value: ironbacks,
 			color: "#D7BC8D",
 			highlight: "#F4E3C5",
 			label: "Ironbacks"
 		},
 		{
-			value: 100,
+			value: plundercrabs,
 			color: "#E8A549",
 			highlight: "#F4C07A",
 			label: "Plundercrabs"
 		},
 		{
-			value: 40,
+			value: ocklepods,
 			color: "#45EEA4",
 			highlight: "#8FF6C9",
 			label: "Ocklepods"
@@ -242,35 +250,35 @@
 		];
 
 		var ctx = $("#brawlersChart1").get(0).getContext("2d");
-		var polarAreaChart = new Chart(ctx).PolarArea(data, {
+		var polarAreaChart = new Chart(ctx).Pie(data, {
 			segmentStrokeColor: "#fff",
 			segmentStrokeWidth : 1,
 			scaleLineColor: "rgba(255,255,255,0.2)"
 		});
 	}
 
-	function setBrawlersGraphWinRate(){
+	function setBrawlersGraphWinRate(razorfins, ironbacks, plundercrabs, ocklepods){
 		var data = [
 		{
-			value: 300,
+			value: razorfins,
 			color:"#8D0B1D",
 			highlight: "#D1475A",
 			label: "Razorfins"
 		},
 		{
-			value: 50,
+			value: ironbacks,
 			color: "#D7BC8D",
 			highlight: "#F4E3C5",
 			label: "Ironbacks"
 		},
 		{
-			value: 100,
+			value: plundercrabs,
 			color: "#E8A549",
 			highlight: "#F4C07A",
 			label: "Plundercrabs"
 		},
 		{
-			value: 40,
+			value: ocklepods,
 			color: "#45EEA4",
 			highlight: "#8FF6C9",
 			label: "Ocklepods"
@@ -278,8 +286,8 @@
 
 		];
 
-		var ctx = $("#brawlersChart2").get(0).getContext("2d");
-		var polarAreaChart = new Chart(ctx).PolarArea(data, {
+		var ctx1 = $("#brawlersChart2").get(0).getContext("2d");
+		var polarAreaChart1 = new Chart(ctx1).PolarArea(data, {
 			segmentStrokeColor: "#fff",
 			segmentStrokeWidth : 1,
 			scaleLineColor: "rgba(255,255,255,0.2)"
