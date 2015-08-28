@@ -8,12 +8,13 @@ html body {
   color: #fff;
   font-family: Muli;
   min-height: 100%;
-  padding: 1px 0;
+  padding: 1px 0 110px 0;
   position: relative;
 }
 html body .loading {
   align-items: center;
   background-color: #000;
+  display: -webkit-flex;
   display: flex;
   height: 100%;
   left: 0;
@@ -104,6 +105,150 @@ html body .top-menu .tabs .tab:hover {
 html body .top-menu .tabs .tab.selected {
   color: #e7b53d;
 }
+html body .app-index .row {
+  margin-top: 60px;
+}
+html body .app-index .row .indexOption {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+@media screen and (max-width: 991px) {
+  html body .app-index .row .indexOption {
+    margin-bottom: 30px;
+  }
+}
+html body .app-index .row .indexOption:hover .iconbg {
+  box-shadow: 0px 0px 10px 3px rgba(231,181,61,0.5);
+}
+html body .app-index .row .indexOption:hover .indexIconText {
+  text-shadow: 0px 1px 6px rgba(231,181,61,0.4);
+}
+html body .app-index .row .indexOption .iconbg {
+  background: rgba(0,0,0,0.8);
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.8);
+  display: inline-block;
+  transition: all 0.6s ease;
+}
+html body .app-index .row .indexOption .iconbg .indexIcon {
+  max-width: 150px;
+  min-width: 80px;
+  width: 100%;
+}
+html body .app-index .row .indexOption .indexIconText {
+  color: #e7b53d;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.6s ease;
+}
+html body .app-regional-index .carouselRegions {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  bottom: 15px;
+}
+html body .app-regional-index .carouselRegions a {
+  color: #e7b53d;
+  text-decoration: none;
+  margin: 0 2px;
+  font-weight: bold;
+}
+html body .app-regional-index .carousel-control {
+  width: 50px;
+}
+html body .app-regional-index .carousel-control span {
+  color: #e7b53d;
+}
+html body .app-regional-index .worldStats {
+  text-align: center;
+}
+html body .app-regional-index .worldStats .titOptSelect {
+  color: #e7b53d;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+html body .app-regional-index .worldStats .graphOptions {
+  display: inline-block;
+  margin-bottom: 30px;
+}
+html body .app-regional-index .worldStats .worldCanvasHolder {
+  height: 400px;
+}
+html body .app-regional-index .worldStats .worldCanvasHolder .barChart {
+  height: 100%;
+}
+html body .app-regional-index .regionalResumeTable {
+  border-color: rgba(231,181,61,0.25);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 0 1px 0 1px;
+  box-shadow: 0px 0px 10px 5px rgba(231,181,61,0.05);
+  overflow: hidden;
+}
+html body .app-regional-index .regionalResumeTable .dropdown {
+  display: inline-block;
+}
+html body .app-regional-index .regionalResumeTable .dropdown button {
+  font-size: 16px;
+  min-width: 100px;
+  padding: 5px;
+}
+html body .app-regional-index .regionalResumeTable .dropdown .dropdown-menu {
+  min-width: 100px;
+  top: 32px;
+}
+html body .app-regional-index .regionalResumeTable .rrt-header {
+  background: rgba(0,0,0,0.75);
+  border-bottom: 1px solid rgba(231,181,61,0.25);
+  padding: 20px;
+}
+html body .app-regional-index .regionalResumeTable .rrt-header h3 {
+  color: #e7b53d;
+  margin: 0;
+  text-align: center;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body {
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body table {
+  width: 100%;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body table td {
+  line-height: 30px;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body table .label {
+  font-weight: bold;
+  color: #e7b53d;
+  font-size: 12px;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body table .info {
+  font-size: 12px;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body .rrt-divider {
+  height: 1px;
+  background: rgba(231,181,61,0.25);
+  margin: 10px -20px;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body .regionHeaderOptions {
+  text-align: center;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body .regionHeaderOptions h4 {
+  color: #e7b53d;
+  display: inline-block;
+  margin: 0;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body .canvasHolder {
+  height: 300px;
+  margin: 20px 0 30px;
+  text-align: center;
+}
 html body .app-champions-index {
   margin-bottom: 129px;
 }
@@ -113,13 +258,13 @@ html body .app-champions-index .championResume {
   border-style: solid;
   border-width: 0 1px 0 1px;
   box-shadow: 0px 0px 10px 5px rgba(231,181,61,0.05);
-  overflow: hidden;
 }
 html body .app-champions-index .championResume .header {
   background: rgba(0,0,0,0.75);
   border-bottom: 1px solid rgba(231,181,61,0.25);
   padding: 20px;
   position: relative;
+  border-radius: 5px 5px 0 0;
 }
 html body .app-champions-index .championResume .header #crImg {
   border-radius: 50%;
@@ -151,36 +296,151 @@ html body .app-champions-index .championResume .header h1 {
   position: absolute;
   top: 36px;
 }
+html body .app-champions-index .championResume .header .championStats {
+  display: inline-block;
+  position: absolute;
+  left: 105px;
+  top: 76px;
+}
+html body .app-champions-index .championResume .header .championStats .stat {
+  margin: 0 5px;
+  display: inline-block;
+  color: #e7b53d;
+}
+html body .app-champions-index .championResume .header .championStats .stat .data {
+  color: #fff;
+}
 html body .app-champions-index .championResume .content {
   background: rgba(0,0,0,0.5);
+  border-radius: 0 0 5px 5px;
   padding: 20px;
 }
-html body .app-champions-index .championResume .content .brawCont {
-  padding: 20px;
+html body .app-champions-index .championResume .content .contentDivider {
+  background: rgba(231,181,61,0.25);
+  height: 1px;
+  margin: 20px -20px;
+}
+html body .app-champions-index .championResume .content .buttonRegion {
+  text-align: center;
+  margin-bottom: 20px;
+}
+html body .app-champions-index .championResume .content .buttonRegion .dropdown {
   display: inline-block;
+}
+html body .app-champions-index .championResume .content .buttonRegion .dropdown button {
+  font-size: 16px;
+  min-width: 100px;
+  padding: 5px;
+}
+html body .app-champions-index .championResume .content .buttonRegion .dropdown .dropdown-menu {
+  min-width: 100px;
+  top: 32px;
+}
+html body .app-champions-index .championResume .content .row {
+  margin: 0;
+}
+html body .app-champions-index .championResume .content .row .graphCol {
+  text-align: center;
+}
+html body .app-champions-index .championResume .content .row .graphCol .graphTitle {
+  color: #e7b53d;
+  margin-bottom: 20px;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+html body .app-champions-index .championResume .content .row .graphCol .canvasHolder {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+}
+html body .app-champions-index .championResume .content .row .graphCol .canvasHolder .polarChart {
+  height: 100%;
+  width: 100%;
+}
+html body .app-champions-index .championResume .content .row .graphCol .polarLegend {
+  display: inline-block;
+  margin: 34px 0px;
+  vertical-align: top;
+}
+html body .app-champions-index .championResume .content .row .graphCol .polarLegend ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 5px;
+  text-align: left;
+}
+html body .app-champions-index .championResume .content .row .graphCol .polarLegend ul li {
+  border-radius: 5px;
+  cursor: default;
+  display: block;
+  font-size: 14px;
+  line-height: 10px;
+  margin-bottom: 4px;
+  padding: 10px 10px 10px 40px;
   position: relative;
 }
-html body .app-champions-index .championResume .content .brawCont .graphIconBraw {
+html body .app-champions-index .championResume .content .row .graphCol .polarLegend ul li img {
   border-radius: 50%;
+  display: block;
   height: 30px;
-  position: absolute;
-  border: 1px solid #fff;
-}
-html body .app-champions-index .championResume .content .brawCont .graphIconBraw.one {
   left: 0;
-  top: 155px;
-}
-html body .app-champions-index .championResume .content .brawCont .graphIconBraw.two {
+  position: absolute;
   top: 0;
-  left: 156px;
+  width: 30px;
 }
-html body .app-champions-index .championResume .content .brawCont .graphIconBraw.three {
-  right: 0px;
-  top: 155px;
+html body .app-champions-index .championResume .content .itemList {
+  text-align: center;
 }
-html body .app-champions-index .championResume .content .brawCont .graphIconBraw.four {
-  bottom: 5px;
-  left: 156px;
+@media screen and (max-width: 991px) {
+  html body .app-champions-index .championResume .content .itemList.uno {
+    margin-bottom: 20px;
+  }
+}
+html body .app-champions-index .championResume .content .itemList h4 {
+  color: #e7b53d;
+  margin-bottom: 20px;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo:nth-child(even) .itemIcon {
+  border: 1px solid rgba(231,181,61,0.5);
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo:nth-child(odd) .itemIcon {
+  border: 1px solid rgba(192,192,192,0.5);
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo:nth-last-child(1) {
+  margin: 10px 0 0 0;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo {
+  margin: 10px 0;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo .itemIcon {
+  border-radius: 50%;
+  height: 50px;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo .itemData {
+  display: inline-table;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo .itemData .center {
+  display: table-cell;
+  text-align: left;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo .itemData .center .name {
+  color: #e7b53d;
+  font-weight: bold;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo .itemData .center .name span {
+  color: #fff;
+  font-weight: normal;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo .itemData .center .rate {
+  color: #e7b53d;
+  font-weight: bold;
+}
+html body .app-champions-index .championResume .content .itemList .itemInfo .itemData .center .rate span {
+  color: #fff;
+  font-weight: normal;
 }
 html body .app-champions-index .champions-grid {
   font-size: 0;
@@ -245,6 +505,42 @@ html body .footer .container {
 html body .footer .container .text {
   display: inline-block;
   margin: 0;
+}
+html body .dropdown button {
+  background: rgba(0,0,0,0.4);
+  border: none;
+  border-color: rgba(231,181,61,0.4);
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 1px 0px;
+  box-shadow: 0px 0px 10px 0px #000;
+  color: #e7b53d;
+  font-size: 20px;
+  min-width: 260px;
+  outline: none;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+html body .dropdown .dropdown-menu {
+  background: rgba(0,0,0,0.8);
+  border: none;
+  border-color: rgba(231,181,61,0.4);
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 0px 1px;
+  box-shadow: none;
+  top: 48px;
+  width: 100%;
+  overflow: hidden;
+}
+html body .dropdown .dropdown-menu li a {
+  color: #e7b53d;
+  text-align: center;
+}
+html body .dropdown .dropdown-menu li a:active,
+html body .dropdown .dropdown-menu li a:hover,
+html body .dropdown .dropdown-menu li a:focus {
+  background-color: rgba(231,181,61,0.2);
 }
 @-moz-keyframes spin {
   from {

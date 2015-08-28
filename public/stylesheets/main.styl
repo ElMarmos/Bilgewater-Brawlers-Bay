@@ -10,12 +10,13 @@ html
 		color white
 		font-family Muli
 		min-height 100%
-		padding 1px 0
+		padding 1px 0 110px 0
 		position relative
 		
 		.loading
 			align-items center
 			background-color black
+			display -webkit-flex
 			display flex
 			height 100%
 			left 0
@@ -104,6 +105,154 @@ html
 					&.selected
 						color amarillo
 						
+		.app-index
+			
+			.row
+				margin-top 60px
+			
+				.indexOption
+					display block
+					text-align center
+					text-decoration none
+					
+					@media screen and (max-width: 991px)
+						margin-bottom 30px
+					
+					&:hover
+						.iconbg
+							box-shadow 0px 0px 10px 3px rgba(amarillo,0.5)
+							
+						.indexIconText
+							text-shadow 0px 1px 6px rgba(amarillo,0.4)
+
+					.iconbg
+						background rgba(0, 0, 0, .8)
+						border-radius 50%
+						box-shadow 0px 0px 10px 5px rgba(black,0.8)
+						display inline-block
+						transition all 0.6s ease
+						
+						.indexIcon
+							max-width 150px
+							min-width 80px
+							width 100%
+							
+					.indexIconText
+						color amarillo
+						display block
+						font-size 18px
+						font-weight bold
+						margin-top 15px
+						text-decoration none
+						text-transform uppercase
+						transition all 0.6s ease
+						
+		.app-regional-index
+			
+			.carouselRegions
+				position absolute
+				text-align center
+				width 100%
+				z-index 1
+				bottom 15px
+				
+				a
+					color amarillo
+					text-decoration none
+					margin 0 2px
+					font-weight bold
+								
+			.carousel-control
+				width 50px
+
+				span
+					color amarillo
+			
+			.worldStats
+				text-align center
+				
+				.titOptSelect
+					color amarillo
+					font-weight bold
+					text-transform uppercase
+					
+				.graphOptions
+					display inline-block
+					margin-bottom 30px
+				
+				.worldCanvasHolder
+					height 400px
+					
+					.barChart
+						height 100%
+
+			
+			.regionalResumeTable
+				border-color rgba(amarillo, .25)
+				border-radius 5px
+				border-style solid
+				border-width 0 1px 0 1px
+				box-shadow 0px 0px 10px 5px rgba(amarillo, .05)
+				overflow hidden
+				
+				.dropdown
+					display inline-block
+					
+					button
+						font-size 16px
+						min-width 100px
+						padding 5px
+						
+					.dropdown-menu
+						min-width 100px
+						top 32px
+				
+				.rrt-header
+					background rgba(black,0.75)
+					border-bottom 1px solid rgba(amarillo, .25)
+					padding 20px
+					
+					h3
+						color amarillo
+						margin 0
+						text-align center
+					
+				.rrt-body
+					background rgba(0, 0, 0, .5)
+					padding 20px
+					
+					table
+						width 100%
+						
+						td
+							line-height 30px
+						
+						.label
+							font-weight bold
+							color amarillo
+							font-size 12px
+							
+						.info
+							font-size 12px
+							
+					.rrt-divider
+						height 1px
+						background rgba(amarillo, .25)
+						margin 10px -20px
+					
+					.regionHeaderOptions
+						text-align center
+						
+						h4
+							color amarillo
+							display inline-block
+							margin 0
+						
+					.canvasHolder
+						height 300px
+						margin 20px 0 30px
+						text-align center
+						
 		.app-champions-index
 			margin-bottom 129px
 			
@@ -113,13 +262,13 @@ html
 				border-style solid
 				border-width 0 1px 0 1px
 				box-shadow 0px 0px 10px 5px rgba(amarillo, .05)
-				overflow hidden
 
 				.header
 					background rgba(black,0.75)
 					border-bottom 1px solid rgba(amarillo, .25)
 					padding 20px
 					position relative
+					border-radius 5px 5px 0 0 
 					
 					#crImg
 						border-radius 50%
@@ -151,36 +300,157 @@ html
 						position absolute
 						top 36px
 						
+					.championStats
+						display inline-block
+						position absolute
+						left 105px
+						top 76px
+						
+						.stat
+							margin 0 5px
+							display inline-block
+							color amarillo
+							
+							.data
+								color white
+						
+						
 				.content
 					background rgba(black, .5)
+					border-radius 0 0 5px 5px
 					padding 20px
 					
-					.brawCont
-						padding 20px
-						display inline-block
-						position relative
+					.contentDivider
+						background rgba(amarillo,.25)
+						height 1px
+						margin 20px -20px
 						
-						.graphIconBraw
-							border-radius 50%
-							height 30px
-							position absolute
-							border 1px solid white
+					.buttonRegion
+						text-align center
+						margin-bottom 20px
+						
+						.dropdown
+							display inline-block
 							
-							&.one
-								left 0
-								top 155px
+							button
+								font-size 16px
+								min-width 100px
+								padding 5px
 								
-							&.two
-								top 0
-								left 156px
-
-							&.three
-								right 0px
-								top 155px
+							.dropdown-menu
+								min-width 100px
+								top 32px
+						
+					
+					.row
+						margin 0
+						
+						.graphCol
+							text-align center
+							
+							.graphTitle
+								color amarillo
+								margin-bottom 20px
+								margin-top 0
+								text-transform uppercase
+						
+							.canvasHolder
+								display inline-block
+								height 200px
+								width 200px
 								
-							&.four
-								bottom 5px
-								left 156px
+								.polarChart
+									height 100%
+									width 100%
+									
+							.polarLegend
+								display inline-block
+								margin 34px 0px
+								vertical-align top
+								
+								ul
+									list-style none
+									margin 0
+									padding-left 5px
+									text-align left
+									
+									li
+										border-radius 5px
+										cursor default
+										display block
+										font-size 14px
+										line-height 10px
+										margin-bottom 4px
+										padding 10px 10px 10px 40px
+										position relative
+										
+										img
+											border-radius 50%
+											display block
+											height 30px
+											left 0
+											position absolute
+											top 0
+											width 30px
+											
+					.itemList
+						text-align center
+						
+						&.uno
+							
+							@media screen and (max-width: 991px)
+								margin-bottom 20px
+						
+						h4
+							color amarillo
+							margin-bottom 20px
+							margin-top 0
+							text-transform uppercase
+							
+						.itemInfo:nth-child(even) .itemIcon {
+							border 1px solid rgba(amarillo, .5)
+						}
+						
+						.itemInfo:nth-child(odd) .itemIcon {
+							border 1px solid rgba(silver, .5)
+						}
+						
+						.itemInfo:nth-last-child(1) {
+							margin 10px 0 0 0
+						}
+						
+						.itemInfo
+							margin 10px 0
+							
+							.itemIcon
+								border-radius 50%
+								height 50px
+								
+								
+							.itemData
+								display inline-table
+								vertical-align middle
+								margin-left 10px
+								
+								.center
+									display table-cell
+									text-align left
+									
+									.name
+										color amarillo
+										font-weight bold
+										
+										span
+											color white
+											font-weight normal
+											
+									.rate
+										color amarillo
+										font-weight bold
+										
+										span
+											color white
+											font-weight normal
 			
 			.champions-grid
 				font-size 0
@@ -245,6 +515,44 @@ html
 				.text
 					display inline-block
 					margin 0
+					
+		.dropdown
+			button
+				background rgba(0, 0, 0, .4)
+				border none
+				border-color rgba(amarillo,.4)
+				border-radius 50px
+				border-style solid
+				border-width 1px 0px
+				box-shadow 0px 0px 10px 0px black
+				color amarillo
+				font-size 20px
+				min-width 260px
+				outline none
+				padding 10px 15px
+				text-transform uppercase
+				
+			.dropdown-menu
+				background rgba(black,.8)
+				border none
+				border-color rgba(amarillo,.4)
+				border-radius 30px
+				border-style solid
+				border-width 0px 1px
+				box-shadow none
+				top 48px
+				width 100%
+				overflow hidden
+				
+				li
+					a
+						color amarillo
+						text-align center
+						
+						&:active
+						&:hover
+						&:focus
+							background-color rgba(amarillo,.2)
 					
 @-moz-keyframes spin {
 	from { -moz-transform: rotate(0deg); }

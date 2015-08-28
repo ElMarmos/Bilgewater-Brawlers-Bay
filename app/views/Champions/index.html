@@ -8,41 +8,164 @@
 
 <div class="app-champions-index">
 	<div class="container">
-		
+
 		<div class="view-title">
 			<h1 class="title-text">Champion Stats</h1>
 			<p class="legend">Here you can <span>select a champion</span> to see stats related to the champion, items of the Black Market he bought, pick rate, win rate and more.</p>
 		</div>
 
-		<a name="aqui"></a>
+		<div class="divider">
+			<a name="aqui"></a>
+		</div>
 
-		<div class="divider"></div>
-		
 		<div class="championResume">
 			<div class="header">
 				<div id="crImg">
 					<div class="animation"></div>
 				</div>
 				<h1 id="crName"></h1>
-			</div>
-			<div class="content">
-				<div class="col-sm-6">
-					<div class="brawCont">
-						<img src="@{'/public/images/3611.png'}" class="graphIconBraw one">
-						<img src="@{'/public/images/3612.png'}" class="graphIconBraw two">
-						<img src="@{'/public/images/3613.png'}" class="graphIconBraw three">
-						<img src="@{'/public/images/3614.png'}" class="graphIconBraw four">
-						<canvas id="brawlersChart" width="200px" height="200px"></canvas>
+				<div class="championStats">
+					<div class="stat">
+						Avg Kills: <span class="data">3</span>
+					</div>
+					<div class="stat">
+						Avg Deaths: <span class="data">3</span>
+					</div>
+					<div class="stat">
+						Avg Assists: <span class="data">3</span>
+					</div>
+					<div class="stat">
+						Win Rate: <span class="data">3</span>
+					</div>
+					<div class="stat">
+						Play Rate: <span class="data">3</span>
 					</div>
 				</div>
-				<div class="col-sm-6">
-					
+			</div>
+			<div class="content">
+				<div class="row">
+					<div class="col-md-6 graphCol">
+						<h4 class="graphTitle">Brawlers Buy Rate</h4>
+						<div class="canvasHolder">
+							<canvas class="polarChart" id="brawlersChart1"></canvas>
+						</div>
+						<div class="polarLegend">
+							<ul class="polararea-legend">
+								<li><img src="@{'public/images/3611.png'}" style="border: 2px solid #8D0B1D">Razorfins</li>
+								<li><img src="@{'public/images/3612.png'}" style="border: 2px solid #D7BC8D">Ironbacks</li>
+								<li><img src="@{'public/images/3613.png'}" style="border: 2px solid #E8A549">Plundercrabs</li>
+								<li><img src="@{'public/images/3614.png'}" style="border: 2px solid #45EEA4">Ocklepods</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-6 graphCol">
+						<h4 class="graphTitle">Brawlers Win Rate</h4>
+						<div class="canvasHolder">
+							<canvas class="polarChart" id="brawlersChart2"></canvas>
+						</div>
+						<div class="polarLegend">
+							<ul class="polararea-legend">
+								<li><img src="@{'public/images/3611.png'}" style="border: 2px solid #8D0B1D">Razorfins</li>
+								<li><img src="@{'public/images/3612.png'}" style="border: 2px solid #D7BC8D">Ironbacks</li>
+								<li><img src="@{'public/images/3613.png'}" style="border: 2px solid #E8A549">Plundercrabs</li>
+								<li><img src="@{'public/images/3614.png'}" style="border: 2px solid #45EEA4">Ocklepods</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="contentDivider"></div>
+				
+				<div class="buttonRegion">
+					<div class="dropdown">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							WORLD
+						</button>
+						<ul id="dropDown1" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="#">WORLD</a></li>
+							<li><a href="#">EUNE</a></li>
+							<li><a href="#">EUW</a></li>
+							<li><a href="#">KR</a></li>
+							<li><a href="#">LAN</a></li>
+							<li><a href="#">LAS</a></li>
+							<li><a href="#">NA</a></li>
+							<li><a href="#">OCE</a></li>
+							<li><a href="#">TR</a></li>
+							<li><a href="#">RU</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="itemList uno">
+							<h4>Relevant Black Market's Items Buy Rate</h4>
+							<div class="itemInfo">
+								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<div class="itemData">
+									<div class="center">
+										<div class="name">Name: <span>Typoon Claws</span></div>
+										<div class="rate">Buy Rate: <span>65,3%</span></div>
+									</div>
+								</div>
+							</div>
+							<div class="itemInfo">
+								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<div class="itemData">
+									<div class="center">
+										<div class="name">Name: <span>Typoon Claws</span></div>
+										<div class="rate">Buy Rate: <span>65,3%</span></div>
+									</div>
+								</div>
+							</div>
+							<div class="itemInfo">
+								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<div class="itemData">
+									<div class="center">
+										<div class="name">Name: <span>Typoon Claws</span></div>
+										<div class="rate">Buy Rate: <span>65,3%</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="itemList">
+							<h4>Relevant Black Market's Items Win Rate</h4>
+							<div class="itemInfo">
+								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<div class="itemData">
+									<div class="center">
+										<div class="name">Name: <span>Typoon Claws</span></div>
+										<div class="rate">Win Rate: <span>65,3%</span></div>
+									</div>
+								</div>
+							</div>
+							<div class="itemInfo">
+								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<div class="itemData">
+									<div class="center">
+										<div class="name">Name: <span>Typoon Claws</span></div>
+										<div class="rate">Win Rate: <span>65,3%</span></div>
+									</div>
+								</div>
+							</div>
+							<div class="itemInfo">
+								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<div class="itemData">
+									<div class="center">
+										<div class="name">Name: <span>Typoon Claws</span></div>
+										<div class="rate">Win Rate: <span>65,3%</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="divider di2"></div>
-		
+
 		<div class="champions-grid">
 			#{list items:campeones, as: 'campeon'}
 			<a class="champion" val="${campeon.id}" href="#">
@@ -60,6 +183,8 @@
 	$('.championResume').hide();
 	$('.di2').hide();
 
+	var campeonSeleccionado = "";
+
 	function scrollToAnchor(aid){
 		var aTag = $("a[name='"+ aid +"']");
 		$('html,body').animate({scrollTop: aTag.offset().top},'slow');
@@ -69,6 +194,7 @@
 		event.preventDefault();
 		scrollToAnchor('aqui');
 		var champ = $(this).attr('val');
+		campeonSeleccionado = champ;
 		var name = $("div > div", this).text();
 		$('.championResume').slideDown();
 		$('.di2').slideDown();
@@ -85,35 +211,88 @@
 				'background-position': 'center',
 				'background-size': '90px 90px'
 			});;
-			setBrawlersGraph();
+			setBrawlersGraphBuyRate();
+			setBrawlersGraphWinRate();
 		});
-		
+
 	});
 
-	function setBrawlersGraph(){
-		var data = {
-			labels: ["", "", "", ""],
-			datasets: [
-			{
-				label: "Brawlers",
-				fillColor: "rgba(231,181,61,0.5)",
-				strokeColor: "rgba(244,201,99,1)",
-				data: [8, 3, 9, 2]
-			}
-			]
-		};
+	function setBrawlersGraphBuyRate(){
+		var data = [
+		{
+			value: 300,
+			color:"#8D0B1D",
+			highlight: "#D1475A",
+			label: "Razorfins"
+		},
+		{
+			value: 50,
+			color: "#D7BC8D",
+			highlight: "#F4E3C5",
+			label: "Ironbacks"
+		},
+		{
+			value: 100,
+			color: "#E8A549",
+			highlight: "#F4C07A",
+			label: "Plundercrabs"
+		},
+		{
+			value: 40,
+			color: "#45EEA4",
+			highlight: "#8FF6C9",
+			label: "Ocklepods"
+		}
 
-		var ctx = $("#brawlersChart").get(0).getContext("2d");
-		var myRadarChart = new Chart(ctx).Radar(data, {
-			pointDot: false,
-			scaleLineColor: "#fff",
-			pointLabelFontColor: "#fff",
-			angleLineColor: "#fff",
-			tooltipFillColor: "rgba(0,0,0,1)"
+		];
+
+		var ctx = $("#brawlersChart1").get(0).getContext("2d");
+		var polarAreaChart = new Chart(ctx).PolarArea(data, {
+			segmentStrokeColor: "#fff",
+			segmentStrokeWidth : 1,
+			scaleLineColor: "rgba(255,255,255,0.2)"
+		});
+	}
+
+	function setBrawlersGraphWinRate(){
+		var data = [
+		{
+			value: 300,
+			color:"#8D0B1D",
+			highlight: "#D1475A",
+			label: "Razorfins"
+		},
+		{
+			value: 50,
+			color: "#D7BC8D",
+			highlight: "#F4E3C5",
+			label: "Ironbacks"
+		},
+		{
+			value: 100,
+			color: "#E8A549",
+			highlight: "#F4C07A",
+			label: "Plundercrabs"
+		},
+		{
+			value: 40,
+			color: "#45EEA4",
+			highlight: "#8FF6C9",
+			label: "Ocklepods"
+		}
+
+		];
+
+		var ctx = $("#brawlersChart2").get(0).getContext("2d");
+		var polarAreaChart = new Chart(ctx).PolarArea(data, {
+			segmentStrokeColor: "#fff",
+			segmentStrokeWidth : 1,
+			scaleLineColor: "rgba(255,255,255,0.2)"
 		});
 	}
 
 	$(window).load(function() {
+		$(this).scrollTop(0);
 		$('.loading').slideUp('600');
 	});
 
