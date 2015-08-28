@@ -1177,61 +1177,370 @@ $('#dropDownBR li a').click(function(event) {
 	event.preventDefault();
 	var sel = $(this).text();
 	$('#dropdownMenu1').text(sel);
-	var info = globalData[js[sel]];
+	var regionAct = globalData[1];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart1").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownEUNE li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu2').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu2').text(sel);
+	var regionAct = globalData[2];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart2").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownEUW li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu3').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu3').text(sel);
+	var regionAct = globalData[3];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart3").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownKR li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu4').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu4').text(sel);
+	var regionAct = globalData[4];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart4").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownLAN li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu5').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu5').text(sel);
+	var regionAct = globalData[5];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart5").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownLAS li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu6').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu6').text(sel);
+	var regionAct = globalData[6];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart6").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownNA li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu7').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu7').text(sel);
+	var regionAct = globalData[7];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart7").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownOCE li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu8').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu8').text(sel);
+	var regionAct = globalData[8];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart8").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownTR li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu9').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu9').text(sel);
+	var regionAct = globalData[9];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart9").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('#dropDownRU li a').click(function(event) {
 	event.preventDefault();
-	var selected = $(this).text();
-	$('#dropdownMenu10').text(selected);
+	var sel = $(this).text();
+	$('#dropdownMenu10').text(sel);
+	var regionAct = globalData[10];
+	var regionComp = globalData[js[sel]];
+
+	var data = {
+		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(141,11,29,0.4)",
+			strokeColor: "rgba(141,11,29,1)",
+			highlightFill: "rgba(141,11,29,.8)",
+			highlightStroke: "rgba(141,11,29,1)",
+			data: [regionAct.kills.toFixed(3), regionAct.deaths.toFixed(3), regionAct.assists.toFixed(3)]
+		},
+		{
+			label: "My Second dataset",
+			fillColor: "rgba(232,165,73,0.4)",
+			strokeColor: "rgba(232,165,73,1)",
+			highlightFill: "rgba(232,165,73,.8)",
+			highlightStroke: "rgba(232,165,73,1)",
+			data: [regionComp.kills.toFixed(3), regionComp.deaths.toFixed(3), regionComp.assists.toFixed(3)]
+		}
+		]
+	};
+
+	var ctx = $("#chart10").get(0).getContext("2d");
+
+	var radarChart = new Chart(ctx).Bar(data, {
+		scaleLineColor: "rgba(255,255,255,0.8)",
+		scaleFontColor : "#fff"
+	});
 });
 
 $('.tab2').addClass('selected');
