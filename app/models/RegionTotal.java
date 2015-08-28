@@ -106,8 +106,8 @@ public class RegionTotal extends Model {
 	/**
 	 * Brawlers statics
 	 */
-	@OneToOne(mappedBy="regionTotal", cascade=CascadeType.ALL)
-	public BrawlersHired brawlersHireds;
+	@OneToMany(mappedBy="regionTotal", cascade=CascadeType.ALL)
+	public List<BrawlersHired> brawlersHireds;
 	
 	/**
 	 * List of champions items stats
@@ -122,6 +122,7 @@ public class RegionTotal extends Model {
 	public List<Champion> champions;	
 	
 	public RegionTotal(){
+		brawlersHireds = new ArrayList<>();
 		blackMarketChampions = new ArrayList<>();
 		champions = new ArrayList<>();
 	}
