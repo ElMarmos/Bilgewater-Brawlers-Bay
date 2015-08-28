@@ -12,15 +12,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.InputStreamReader;
-=======
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
->>>>>>> origin/master
 import java.util.*;
 
 import javax.swing.JPanel;
