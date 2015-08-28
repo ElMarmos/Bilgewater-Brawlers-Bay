@@ -119,17 +119,16 @@ html body .app-index .row .indexOption {
   }
 }
 html body .app-index .row .indexOption:hover .iconbg {
-  box-shadow: 0px 0px 10px 3px rgba(231,181,61,0.2);
+  box-shadow: 0px 0px 10px 3px rgba(231,181,61,0.5);
 }
 html body .app-index .row .indexOption:hover .indexIconText {
   text-shadow: 0px 1px 6px rgba(231,181,61,0.4);
 }
 html body .app-index .row .indexOption .iconbg {
   background: rgba(0,0,0,0.8);
-  border-radius: 50px;
-  box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.8);
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.8);
   display: inline-block;
-  padding: 15px;
   transition: all 0.6s ease;
 }
 html body .app-index .row .indexOption .iconbg .indexIcon {
@@ -147,12 +146,39 @@ html body .app-index .row .indexOption .indexIconText {
   text-transform: uppercase;
   transition: all 0.6s ease;
 }
+html body .app-regional-index .carouselRegions {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  bottom: 15px;
+}
+html body .app-regional-index .carouselRegions a {
+  color: #e7b53d;
+  text-decoration: none;
+  margin: 0 2px;
+  font-weight: bold;
+}
+html body .app-regional-index .carousel-control {
+  width: 50px;
+}
+html body .app-regional-index .carousel-control span {
+  color: #e7b53d;
+}
 html body .app-regional-index .worldStats {
-  height: 400px;
   text-align: center;
 }
+html body .app-regional-index .worldStats .titOptSelect {
+  color: #e7b53d;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+html body .app-regional-index .worldStats .graphOptions {
+  display: inline-block;
+  margin-bottom: 30px;
+}
 html body .app-regional-index .worldStats .worldCanvasHolder {
-  height: 100%;
+  height: 400px;
 }
 html body .app-regional-index .worldStats .worldCanvasHolder .barChart {
   height: 100%;
@@ -164,6 +190,18 @@ html body .app-regional-index .regionalResumeTable {
   border-width: 0 1px 0 1px;
   box-shadow: 0px 0px 10px 5px rgba(231,181,61,0.05);
   overflow: hidden;
+}
+html body .app-regional-index .regionalResumeTable .dropdown {
+  display: inline-block;
+}
+html body .app-regional-index .regionalResumeTable .dropdown button {
+  font-size: 16px;
+  min-width: 100px;
+  padding: 5px;
+}
+html body .app-regional-index .regionalResumeTable .dropdown .dropdown-menu {
+  min-width: 100px;
+  top: 32px;
 }
 html body .app-regional-index .regionalResumeTable .rrt-header {
   background: rgba(0,0,0,0.75);
@@ -198,18 +236,18 @@ html body .app-regional-index .regionalResumeTable .rrt-body .rrt-divider {
   background: rgba(231,181,61,0.25);
   margin: 10px -20px;
 }
-html body .app-regional-index .regionalResumeTable .rrt-body h4 {
-  color: #e7b53d;
-  margin: 0;
+html body .app-regional-index .regionalResumeTable .rrt-body .regionHeaderOptions {
   text-align: center;
+}
+html body .app-regional-index .regionalResumeTable .rrt-body .regionHeaderOptions h4 {
+  color: #e7b53d;
+  display: inline-block;
+  margin: 0;
 }
 html body .app-regional-index .regionalResumeTable .rrt-body .canvasHolder {
   height: 300px;
-  margin-top: 20px;
-}
-html body .app-regional-index .regionalResumeTable .rrt-body .canvasHolder .radarChart {
-  height: 100%;
-  width: 100%;
+  margin: 20px 0 30px;
+  text-align: center;
 }
 html body .app-champions-index {
   margin-bottom: 129px;
@@ -220,13 +258,13 @@ html body .app-champions-index .championResume {
   border-style: solid;
   border-width: 0 1px 0 1px;
   box-shadow: 0px 0px 10px 5px rgba(231,181,61,0.05);
-  overflow: hidden;
 }
 html body .app-champions-index .championResume .header {
   background: rgba(0,0,0,0.75);
   border-bottom: 1px solid rgba(231,181,61,0.25);
   padding: 20px;
   position: relative;
+  border-radius: 5px 5px 0 0;
 }
 html body .app-champions-index .championResume .header #crImg {
   border-radius: 50%;
@@ -272,20 +310,31 @@ html body .app-champions-index .championResume .header .championStats .stat {
 html body .app-champions-index .championResume .header .championStats .stat .data {
   color: #fff;
 }
-html body .app-champions-index .championResume .header .championStats .stat .data.negative {
-  color: #f00;
-}
-html body .app-champions-index .championResume .header .championStats .stat .data.positive {
-  color: #008000;
-}
 html body .app-champions-index .championResume .content {
   background: rgba(0,0,0,0.5);
+  border-radius: 0 0 5px 5px;
   padding: 20px;
 }
 html body .app-champions-index .championResume .content .contentDivider {
   background: rgba(231,181,61,0.25);
   height: 1px;
   margin: 20px -20px;
+}
+html body .app-champions-index .championResume .content .buttonRegion {
+  text-align: center;
+  margin-bottom: 20px;
+}
+html body .app-champions-index .championResume .content .buttonRegion .dropdown {
+  display: inline-block;
+}
+html body .app-champions-index .championResume .content .buttonRegion .dropdown button {
+  font-size: 16px;
+  min-width: 100px;
+  padding: 5px;
+}
+html body .app-champions-index .championResume .content .buttonRegion .dropdown .dropdown-menu {
+  min-width: 100px;
+  top: 32px;
 }
 html body .app-champions-index .championResume .content .row {
   margin: 0;
@@ -456,6 +505,42 @@ html body .footer .container {
 html body .footer .container .text {
   display: inline-block;
   margin: 0;
+}
+html body .dropdown button {
+  background: rgba(0,0,0,0.4);
+  border: none;
+  border-color: rgba(231,181,61,0.4);
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 1px 0px;
+  box-shadow: 0px 0px 10px 0px #000;
+  color: #e7b53d;
+  font-size: 20px;
+  min-width: 260px;
+  outline: none;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+html body .dropdown .dropdown-menu {
+  background: rgba(0,0,0,0.8);
+  border: none;
+  border-color: rgba(231,181,61,0.4);
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 0px 1px;
+  box-shadow: none;
+  top: 48px;
+  width: 100%;
+  overflow: hidden;
+}
+html body .dropdown .dropdown-menu li a {
+  color: #e7b53d;
+  text-align: center;
+}
+html body .dropdown .dropdown-menu li a:active,
+html body .dropdown .dropdown-menu li a:hover,
+html body .dropdown .dropdown-menu li a:focus {
+  background-color: rgba(231,181,61,0.2);
 }
 @-moz-keyframes spin {
   from {

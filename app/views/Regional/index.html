@@ -1,15 +1,46 @@
 #{extends 'main.html' /}
 
+<div class="loading">
+	<div class="centered">
+		<img class="spinner" src="@{'public/images/spinner.svg'}">
+	</div>
+</div>
+
 <div class="app-regional-index">
 	<div class="container">
 		<div class="view-title">
 			<h1 class="title-text">Regional Stats</h1>
-			<p class="legend">Here you can <span>select a a type of chart</span> to compare regions, or a <span>resume of every region</span>.</p>
+			<p class="legend">Here you can <span>select a chart</span> to compare regions, or see a <span>resume of every region</span>.</p>
 		</div>
 
 		<div class="divider"></div>
 
 		<div class="worldStats">
+			<div class="graphOptions">
+				<div class="dropdown">
+					<button type="button" id="dropdownMenuWorld" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						Average Kills
+					</button>
+					<ul id="dropDownGlobal" class="dropdown-menu" aria-labelledby="dropdownMenuWorld">
+						<li><a href="#">Average Kills</a></li>
+						<li><a href="#">Average Deaths</a></li>
+						<li><a href="#">Average Assists</a></li>
+						<li><a href="#">Average Minions Killed</a></li>
+						<li><a href="#">Average Neutral Monsters Killed</a></li>
+						<li><a href="#">Average Gold Earned</a></li>
+						<li><a href="#">Average Krakens Spended</a></li>
+						<li><a href="#">Average Game Time</a></li>
+						<li><a href="#">Longest Game Time</a></li>
+						<li><a href="#">Average Double Kills</a></li>
+						<li><a href="#">Average Triple Kills</a></li>
+						<li><a href="#">Average Quadra Kills</a></li>
+						<li><a href="#">Average Penta Kills</a></li>
+						<li><a href="#">Average Turrets Destroyed</a></li>
+						<li><a href="#">Average Dragon Kills</a></li>
+						<li><a href="#">Average Baron Kills</a></li>
+					</ul>
+				</div>
+			</div>
 			<div class="worldCanvasHolder">
 				<canvas class="barChart" id="worldChart"></canvas>
 			</div>
@@ -17,130 +48,1193 @@
 
 		<div class="divider"></div>
 
-		<div class="row">
-			<div class="col-md-6">
-				<div class="regionalResumeTable">
-					<div class="rrt-header">
-						<h3>LAN</h3>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+			<div class="carouselRegions">
+				<a href="#" data-target="#myCarousel" data-slide-to="0">BR</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="1">EUNE</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="2">EUW</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="3">KR</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="4">LAN</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="5">LAS</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="6">NA</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="7">OCE</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="8">TR</a>
+				<a href="#" data-target="#myCarousel" data-slide-to="9">RU</a>
+			</div>
+
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>BR</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table1">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownBR" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">TR</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch1">
+								
+							</div>
+						</div>
 					</div>
-					<div class="rrt-body">
-						<table>
-							<tr>
-								<td class="label">Avg Kills</td>
-								<td class="info">500</td>
-								<td class="label">Longest Game Time</td>
-								<td class="info">500</td>
-							</tr>
-							<tr>
-								<td class="label">Avg Deaths</td>
-								<td class="info">500</td>
-								<td class="label">Avg Double Kills</td>
-								<td class="info">500</td>
-							</tr>
-							<tr>
-								<td class="label">Avg Assists</td>
-								<td class="info">500</td>
-								<td class="label">Avg Triple Kills</td>
-								<td class="info">500</td>
-							</tr>
-							<tr>
-								<td class="label">Avg Minions Killed</td>
-								<td class="info">500</td>
-								<td class="label">Avg Quadra Kills</td>
-								<td class="info">500</td>
-							</tr>
-							<tr>
-								<td class="label">Avg Neutral Monsters Killed</td>
-								<td class="info">500</td>
-								<td class="label">Avg Penta Kills</td>
-								<td class="info">500</td>
-							</tr>
-							<tr>
-								<td class="label">Avg Gold</td>
-								<td class="info">500</td>
-								<td class="label">Avg Turrets Destroyed</td>
-								<td class="info">500</td>
-							</tr>
-							<tr>
-								<td class="label">Avg Krakens Spended</td>
-								<td class="info">500</td>
-								<td class="label">Avg Dragon Kills</td>
-								<td class="info">500</td>
-							</tr>
-							<tr>
-								<td class="label">Avg Game Time</td>
-								<td class="info">500</td>
-								<td class="label">Avg Baron Kills</td>
-								<td class="info">500</td>
-							</tr>
-						</table>
-						<div class="rrt-divider"></div>
-						<h4>Compared to the World</h4>
-						<div class="canvasHolder">
-							<canvas class="radarChart" id="lanChart"></canvas>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>EUNE</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table2">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownEUNE" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">TR</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch2">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>EUW</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table3">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownEUW" class="dropdown-menu" aria-labelledby="dropdownMenu3">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">TR</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch3">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>KR</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table4">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownKR" class="dropdown-menu" aria-labelledby="dropdownMenu4">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">TR</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch4">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>LAN</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table5">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownLAN" class="dropdown-menu" aria-labelledby="dropdownMenu5">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">TR</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch5">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>LAS</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table6">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownLAS" class="dropdown-menu" aria-labelledby="dropdownMenu6">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">TR</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch6">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>NA</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table7">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownNA" class="dropdown-menu" aria-labelledby="dropdownMenu7">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">TR</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch7">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>OCE</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table8">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownOCE" class="dropdown-menu" aria-labelledby="dropdownMenu8">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">TR</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch8">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>TR</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table9">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownTR" class="dropdown-menu" aria-labelledby="dropdownMenu9">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">RU</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch9">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="regionalResumeTable">
+						<div class="rrt-header">
+							<h3>RU</h3>
+						</div>
+						<div class="rrt-body">
+							<table id="table10">
+								<tr>
+									<td class="label">Avg Kills</td>
+									<td class="info txt1">500</td>
+									<td class="label">Longest Game Time</td>
+									<td class="info txt2">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Deaths</td>
+									<td class="info txt3">500</td>
+									<td class="label">Avg Double Kills</td>
+									<td class="info txt4">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Assists</td>
+									<td class="info txt5">500</td>
+									<td class="label">Avg Triple Kills</td>
+									<td class="info txt6">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Minions Killed</td>
+									<td class="info txt7">500</td>
+									<td class="label">Avg Quadra Kills</td>
+									<td class="info txt8">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Neutral Monsters Killed</td>
+									<td class="info txt9">500</td>
+									<td class="label">Avg Penta Kills</td>
+									<td class="info txt10">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Gold</td>
+									<td class="info txt11">500</td>
+									<td class="label">Avg Turrets Destroyed</td>
+									<td class="info txt12">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Krakens Spended</td>
+									<td class="info txt13">500</td>
+									<td class="label">Avg Dragon Kills</td>
+									<td class="info txt14">500</td>
+								</tr>
+								<tr>
+									<td class="label">Avg Game Time</td>
+									<td class="info txt15">500</td>
+									<td class="label">Avg Baron Kills</td>
+									<td class="info txt16">500</td>
+								</tr>
+							</table>
+							<div class="rrt-divider"></div>
+							<div class="regionHeaderOptions">
+								<h4>KDA Compared to </h4>
+								<div class="dropdown">
+									<button type="button" id="dropdownMenu10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										WORLD
+									</button>
+									<ul id="dropDownRU" class="dropdown-menu" aria-labelledby="dropdownMenu10">
+										<li><a href="#">WORLD</a></li>
+										<li><a href="#">BR</a></li>
+										<li><a href="#">EUNE</a></li>
+										<li><a href="#">EUW</a></li>
+										<li><a href="#">KR</a></li>
+										<li><a href="#">LAN</a></li>
+										<li><a href="#">LAS</a></li>
+										<li><a href="#">NA</a></li>
+										<li><a href="#">OCE</a></li>
+										<li><a href="#">TR</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="canvasHolder ch10">
+								
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
 		</div>
 	</div>
+	<div class="canvasesHolder"></div>
 </div>
 
 <script>
 
-	var data = {
-		labels: ["Avg Kills", "Avg Deaths", "Avg Assists", "Avg Krakens", "Avg Dragons", "Avg Barons"],
-		datasets: [
-		{
-			label: "My First dataset",
-			fillColor: "rgba(141,11,29,0.4)",
-			strokeColor: "rgba(141,11,29,1)",
-			pointColor: "rgba(141,11,29,1)",
-			pointStrokeColor: "#fff",
-			pointHighlightFill: "#fff",
-			pointHighlightStroke: "rgba(220,220,220,1)",
-			data: [65, 59, 90, 81, 56, 55]
-		},
-		{
-			label: "My Second dataset",
-			fillColor: "rgba(232,165,73,0.4)",
-			strokeColor: "rgba(232,165,73,1)",
-			pointColor: "rgba(232,165,73,1)",
-			pointStrokeColor: "#fff",
-			pointHighlightFill: "#fff",
-			pointHighlightStroke: "rgba(151,187,205,1)",
-			data: [28, 48, 40, 19, 96, 27]
-		}
-		]
-	};
+	var js = {"WORLD":"world","BR":1,"EUNE":2,"EUW":3,"KR":4,"LAN":5,"LAS":6,"NA":7,"OCE":8,"TR":9,"RU":10};
 
-	var ctx = $("#lanChart").get(0).getContext("2d");
-	var radarChart = new Chart(ctx).Radar(data, {
-		scaleLineColor: "rgba(255,255,255,0.8)",
-		pointLabelFontColor : "#fff"
+	var globalData;
+	
+	$.ajax({
+		url: '@{Regional.loadPage}',
+		type: 'POST',
+		dataType: 'json'
+	})
+	.done(function(info) {
+
+		var worldInfo = info['world'];
+		globalData = info;
+		var worldassists = worldInfo.assists.toFixed(3);
+		var worldbarons = worldInfo.barons.toFixed(3);
+		var worldcs = worldInfo.cs.toFixed(3);
+		var worlddeaths = worldInfo.deaths.toFixed(3);
+		var worlddoubles = worldInfo.doubles.toFixed(3);
+		var worlddragons = worldInfo.dragons.toFixed(3);
+		var worldgold = worldInfo.gold.toFixed(3);
+		var worldkills = worldInfo.kills.toFixed(3);
+		var worldkrakens = worldInfo.krakens.toFixed(3);
+		var worldlongest = worldInfo.longest.toFixed(3);
+		var worldncs = worldInfo.ncs.toFixed(3);
+		var worldpentas = worldInfo.pentas.toFixed(3);
+		var worldquadras = worldInfo.quadras.toFixed(3);
+		var worldtime = worldInfo.time.toFixed(3);
+		var worldtriples = worldInfo.triples.toFixed(3);
+		var worldturrets = worldInfo.turrets.toFixed(3);
+
+		var worldData = [11];
+
+		worldData[0] = worldkills;
+
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			var assists = reg.assists.toFixed(3);
+			var barons = reg.barons.toFixed(3);
+			var cs = reg.cs.toFixed(3);
+			var deaths = reg.deaths.toFixed(3);
+			var doubles = reg.doubles.toFixed(3);
+			var dragons = reg.dragons.toFixed(3);
+			var gold = reg.gold.toFixed(3);
+			var kills = reg.kills.toFixed(3);
+			var krakens = reg.krakens.toFixed(3);
+			var longest = reg.longest;
+			var ncs = reg.ncs.toFixed(3);
+			var pentas = reg.pentas.toFixed(3);
+			var quadras = reg.quadras.toFixed(3);
+			var time = reg.time.toFixed(0);
+			var triples = reg.triples.toFixed(3);
+			var turrets = reg.turrets.toFixed(3);
+
+			$('#table'+i+' .txt1').text(kills);
+			$('#table'+i+' .txt3').text(deaths);
+			$('#table'+i+' .txt5').text(assists);
+			$('#table'+i+' .txt7').text(cs);
+			$('#table'+i+' .txt9').text(ncs);
+			$('#table'+i+' .txt11').text(gold);
+			$('#table'+i+' .txt13').text(krakens);
+			$('#table'+i+' .txt15').text(time);
+			$('#table'+i+' .txt2').text(longest);
+			$('#table'+i+' .txt4').text(doubles);
+			$('#table'+i+' .txt6').text(triples);
+			$('#table'+i+' .txt8').text(quadras);
+			$('#table'+i+' .txt10').text(pentas);
+			$('#table'+i+' .txt12').text(turrets);
+			$('#table'+i+' .txt14').text(dragons);
+			$('#table'+i+' .txt16').text(barons);
+
+			worldData[i] = kills;
+
+			var data = {
+				labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
+				datasets: [
+				{
+					label: "My First dataset",
+					fillColor: "rgba(141,11,29,0.4)",
+					strokeColor: "rgba(141,11,29,1)",
+					highlightFill: "rgba(141,11,29,.8)",
+					highlightStroke: "rgba(141,11,29,1)",
+					data: [worldkills,worlddeaths,worldassists]
+				},
+				{
+					label: "My Second dataset",
+					fillColor: "rgba(232,165,73,0.4)",
+					strokeColor: "rgba(232,165,73,1)",
+					highlightFill: "rgba(232,165,73,.8)",
+					highlightStroke: "rgba(232,165,73,1)",
+					data: [kills,deaths,assists]
+				}
+				]
+			};
+
+			$('.canvasesHolder').append('<canvas class="radarChart" id="chart'+i+'" height="300px" width="400px"></canvas>');
+
+			var ctx = $("#chart"+i).get(0).getContext("2d");
+
+			var radarChart = new Chart(ctx).Bar(data, {
+				scaleLineColor: "rgba(255,255,255,0.8)",
+				scaleFontColor : "#fff"
+			});
+
+			$('#chart'+i).appendTo('.ch'+i);
+
+		}
+
+		var dataBar = {
+			labels: ["WORLD", "BR", "EUNE", "EUW", "KR", "LAN", "LAS", "NA", "OCE", "TR", "RU"],
+			datasets: [
+			{
+				label: "My First dataset",
+				fillColor: "rgba(141,11,29,.6)",
+				strokeColor: "rgba(141,11,29,.1)",
+				highlightFill: "rgba(141,11,29,.8)",
+				highlightStroke: "rgba(141,11,29,.1)",
+				data: worldData
+			}
+			]
+		};
+
+		var barChart = $("#worldChart").get(0).getContext("2d");
+		var myBarChart = new Chart(barChart).Bar(dataBar, {
+			scaleFontColor: "#fff",
+			scaleLineColor: "rgba(255,255,255,0.8)"
+		});
+
+		$('.loading').slideUp('600');
 	});
+
+$('#dropDownGlobal li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenuWorld').text(selected);
+
+	$('.worldCanvasHolder').empty();
+	$('.worldCanvasHolder').append('<canvas class="barChart" id="worldChart"></canvas>');
+
+	var result = [11];
+
+	var info = globalData;
+
+	if(selected == "Average Kills"){
+		result[0] = info['world'].kills.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.kills.toFixed(3);
+		}
+	}else if(selected == "Average Deaths"){
+		result[0] = info['world'].deaths.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.deaths.toFixed(3);
+		}
+	}else if(selected == "Average Assists"){
+		result[0] = info['world'].assists.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.assists.toFixed(3);
+		}
+	}else if(selected == "Average Minions Killed"){
+		result[0] = info['world'].cs.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.cs.toFixed(3);
+		}
+	}else if(selected == "Average Neutral Monsters Killed"){
+		result[0] = info['world'].ncs.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.ncs.toFixed(3);
+		}
+	}else if(selected == "Average Gold Earned"){
+		result[0] = info['world'].gold.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.gold.toFixed(3);
+		}
+	}else if(selected == "Average Krakens Spended"){
+		result[0] = info['world'].krakens.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.krakens.toFixed(3);
+		}
+	}else if(selected == "Average Game Time"){
+		result[0] = info['world'].time.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.time.toFixed(3);
+		}
+	}else if(selected == "Longest Game Time"){
+		result[0] = info['world'].longest.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.longest.toFixed(3);
+		}
+	}else if(selected == "Average Double Kills"){
+		result[0] = info['world'].doubles.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.doubles.toFixed(3);
+		}
+	}else if(selected == "Average Triple Kills"){
+		result[0] = info['world'].triples.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.triples.toFixed(3);
+		}
+	}else if(selected == "Average Quadra Kills"){
+		result[0] = info['world'].quadras.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.quadras.toFixed(3);
+		}
+	}else if(selected == "Average Penta Kills"){
+		result[0] = info['world'].pentas;
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.pentas;
+		}
+	}else if(selected == "Average Turrets Destroyed"){
+		result[0] = info['world'].turrets.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.turrets.toFixed(3);
+		}
+	}else if(selected == "Average Dragon Kills"){
+		result[0] = info['world'].dragons.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.dragons.toFixed(3);
+		}
+	}else if(selected == "Average Baron Kills"){
+		result[0] = info['world'].barons.toFixed(3);
+		for (var i = 1; i <= 10; i++) {
+			var reg = info[i];
+			result[i] = reg.barons.toFixed(3);
+		}
+	}
 
 	var dataBar = {
 		labels: ["WORLD", "BR", "EUNE", "EUW", "KR", "LAN", "LAS", "NA", "OCE", "TR", "RU"],
 		datasets: [
 		{
 			label: "My First dataset",
-			fillColor: "rgba(141,11,29,.8)",
-			strokeColor: "rgba(141,11,29,.8)",
+			fillColor: "rgba(141,11,29,.6)",
+			strokeColor: "rgba(141,11,29,.1)",
 			highlightFill: "rgba(141,11,29,.8)",
-			highlightStroke: "rgba(141,11,29,.8)",
-			data: [65, 30, 20, 30, 20, 30, 20, 50, 10, 20, 11]
+			highlightStroke: "rgba(141,11,29,.1)",
+			data: result
 		}
 		]
 	};
+
 	var barChart = $("#worldChart").get(0).getContext("2d");
 	var myBarChart = new Chart(barChart).Bar(dataBar, {
 		scaleFontColor: "#fff",
 		scaleLineColor: "rgba(255,255,255,0.8)"
 	});
+});
 
+$('#dropDownBR li a').click(function(event) {
+	event.preventDefault();
+	var sel = $(this).text();
+	$('#dropdownMenu1').text(sel);
+	var info = globalData[js[sel]];
+});
 
-	$('.tab2').addClass('selected');
+$('#dropDownEUNE li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu2').text(selected);
+});
+
+$('#dropDownEUW li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu3').text(selected);
+});
+
+$('#dropDownKR li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu4').text(selected);
+});
+
+$('#dropDownLAN li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu5').text(selected);
+});
+
+$('#dropDownLAS li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu6').text(selected);
+});
+
+$('#dropDownNA li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu7').text(selected);
+});
+
+$('#dropDownOCE li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu8').text(selected);
+});
+
+$('#dropDownTR li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu9').text(selected);
+});
+
+$('#dropDownRU li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();
+	$('#dropdownMenu10').text(selected);
+});
+
+$('.tab2').addClass('selected');
 
 
 </script>

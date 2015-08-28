@@ -74,20 +74,31 @@
 					</div>
 				</div>
 				<div class="contentDivider"></div>
+				
+				<div class="buttonRegion">
+					<div class="dropdown">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							WORLD
+						</button>
+						<ul id="dropDown1" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="#">WORLD</a></li>
+							<li><a href="#">EUNE</a></li>
+							<li><a href="#">EUW</a></li>
+							<li><a href="#">KR</a></li>
+							<li><a href="#">LAN</a></li>
+							<li><a href="#">LAS</a></li>
+							<li><a href="#">NA</a></li>
+							<li><a href="#">OCE</a></li>
+							<li><a href="#">TR</a></li>
+							<li><a href="#">RU</a></li>
+						</ul>
+					</div>
+				</div>
 
 				<div class="row">
 					<div class="col-md-6">
 						<div class="itemList uno">
 							<h4>Relevant Black Market's Items Buy Rate</h4>
-							<div class="itemInfo">
-								<img src="@{'public/images/3652.png'}" class="itemIcon">
-								<div class="itemData">
-									<div class="center">
-										<div class="name">Name: <span>Typoon Claws</span></div>
-										<div class="rate">Buy Rate: <span>65,3%</span></div>
-									</div>
-								</div>
-							</div>
 							<div class="itemInfo">
 								<img src="@{'public/images/3652.png'}" class="itemIcon">
 								<div class="itemData">
@@ -147,15 +158,6 @@
 									</div>
 								</div>
 							</div>
-							<div class="itemInfo">
-								<img src="@{'public/images/3652.png'}" class="itemIcon">
-								<div class="itemData">
-									<div class="center">
-										<div class="name">Name: <span>Typoon Claws</span></div>
-										<div class="rate">Win Rate: <span>65,3%</span></div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -181,6 +183,8 @@
 	$('.championResume').hide();
 	$('.di2').hide();
 
+	var campeonSeleccionado = "";
+
 	function scrollToAnchor(aid){
 		var aTag = $("a[name='"+ aid +"']");
 		$('html,body').animate({scrollTop: aTag.offset().top},'slow');
@@ -190,6 +194,7 @@
 		event.preventDefault();
 		scrollToAnchor('aqui');
 		var champ = $(this).attr('val');
+		campeonSeleccionado = champ;
 		var name = $("div > div", this).text();
 		$('.championResume').slideDown();
 		$('.di2').slideDown();
