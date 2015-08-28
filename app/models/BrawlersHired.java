@@ -60,7 +60,7 @@ public class BrawlersHired extends Model {
 	/**
 	 * Region
 	 */
-	@OneToOne
+	@ManyToOne
 	public RegionTotal regionTotal;
 	
 }

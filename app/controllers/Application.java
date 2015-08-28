@@ -1,6 +1,8 @@
 package controllers;
 
 import play.*;
+import play.db.jpa.JPA;
+import play.db.jpa.NoTransaction;
 import play.libs.WS;
 import play.libs.WS.HttpResponse;
 import play.mvc.*;
@@ -10,11 +12,20 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.InputStreamReader;
+=======
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+>>>>>>> origin/master
 import java.util.*;
+
+import javax.swing.JPanel;
+
+import org.apache.commons.io.monitor.FileEntry;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -22,30 +33,71 @@ import com.google.gson.JsonParser;
 
 import models.*;
 
+
 public class Application extends Controller {
-	
+
+	private static long partidaLarga = 0;
+
 	public static void index() {
 		render();
 	}
-	
-	private static long partidaLarga = 0;
-	
-	public static String populateDb() {
 
+	public static String guardar() {
 		try {
-			RegionTotal r = new RegionTotal();
-			r.region = "NA";
-			r.region_id = "NA1";
-			r.save();
-			System.out.println("save");
 			BufferedReader br = new BufferedReader(new FileReader(
-					"./NA/NA.json"));
+					"./LAN/LAN.json"));
 			String line = br.readLine();
+			PrintWriter printWriter = new PrintWriter(new File(
+					"./LAN/LAN_ALL.json"));
 			int i = 0;
 			while (line != null) {
 				System.out.println("van " + i + " partida " + line);
 				try {
-					BufferedReader partida = new BufferedReader(new FileReader("./NA/"+line+".json"));
+					BufferedReader partida = new BufferedReader(new FileReader(
+							"./LAN/" + line + ".json"));
+					String homePage = partida.readLine();
+					printWriter.println(homePage);
+					line = br.readLine();
+					partida.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if(i==300){
+					break;
+				}
+				i++;
+			}
+			br.close();
+			printWriter.close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return "";
+	}
+
+	public static String populateDb() {
+
+		try {
+			RegionTotal r = RegionTotal.find("byRegion_id", "TR1").first();
+			if(r==null){
+				r = new RegionTotal();
+				r.region_id = "TR1";
+				r.region = "TR";
+				r.save();
+			}
+			BufferedReader br = new BufferedReader(new FileReader(
+					"./TR/TR.json"));
+			String line = br.readLine();
+			int i = 0;
+			while (line != null) {
+				System.out.println("van " + i + " partida "+ line);
+				try {
+					BufferedReader partida = new BufferedReader(new FileReader(
+							"./TR/" + line + ".json"));
 					String homePage = partida.readLine();
 					setMatch(homePage, r);
 					line = br.readLine();
@@ -61,7 +113,6 @@ public class Application extends Controller {
 			return "";
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -78,7 +129,7 @@ public class Application extends Controller {
 
 	public static String setMatchAvg(JsonObject obj, RegionTotal r) {
 		double AvgDuration = obj.get("matchDuration").getAsDouble() / 10000;
-		if(obj.get("matchDuration").getAsLong()>partidaLarga){
+		if (obj.get("matchDuration").getAsLong() > partidaLarga) {
 			partidaLarga = obj.get("matchDuration").getAsLong();
 		}
 		double AvgTowerKills = 0;
@@ -197,11 +248,16 @@ public class Application extends Controller {
 							r.average_krakens += 0.002;
 						}
 						if (itemId == 3611) {
-							BrawlersHired bh= BrawlersHired.find("byChampion_idAndRegionTotal",championByParticipant.get(participantId), r).first();
+							BrawlersHired bh = BrawlersHired
+									.find("byChampion_idAndRegionTotal",
+											championByParticipant
+													.get(participantId), r)
+									.first();
 							if (bh == null) {
 								bh = new BrawlersHired();
 								bh.champion_id = championByParticipant
 										.get(participantId);
+								bh.regionTotal = r;
 							}
 							// Razorfin
 							bh.razorfins += 1;
@@ -218,14 +274,16 @@ public class Application extends Controller {
 							bh.save();
 						}
 						if (itemId == 3612) {
-							BrawlersHired bh = BrawlersHired.find(
-									"byChampion_idAndRegionTotal",
-									championByParticipant.get(participantId), r)
+							BrawlersHired bh = BrawlersHired
+									.find("byChampion_idAndRegionTotal",
+											championByParticipant
+													.get(participantId), r)
 									.first();
 							if (bh == null) {
 								bh = new BrawlersHired();
 								bh.champion_id = championByParticipant
 										.get(participantId);
+								bh.regionTotal = r;
 							}
 							// Ironback
 							bh.ironbacks += 1;
@@ -242,14 +300,16 @@ public class Application extends Controller {
 							bh.save();
 						}
 						if (itemId == 3613) {
-							BrawlersHired bh = BrawlersHired.find(
-									"byChampion_idAndRegionTotal",
-									championByParticipant.get(participantId), r)
+							BrawlersHired bh = BrawlersHired
+									.find("byChampion_idAndRegionTotal",
+											championByParticipant
+													.get(participantId), r)
 									.first();
 							if (bh == null) {
 								bh = new BrawlersHired();
 								bh.champion_id = championByParticipant
 										.get(participantId);
+								bh.regionTotal = r;
 							}
 							// Plundercrab
 							bh.plundercrabs += 1;
@@ -266,14 +326,16 @@ public class Application extends Controller {
 							bh.save();
 						}
 						if (itemId == 3614) {
-							BrawlersHired bh = BrawlersHired.find(
-									"byChampion_idAndRegionTotal",
-									championByParticipant.get(participantId), r)
+							BrawlersHired bh = BrawlersHired
+									.find("byChampion_idAndRegionTotal",
+											championByParticipant
+													.get(participantId), r)
 									.first();
 							if (bh == null) {
 								bh = new BrawlersHired();
 								bh.champion_id = championByParticipant
 										.get(participantId);
+								bh.regionTotal = r;
 							}
 							// Ocklepod
 							bh.ocklepods += 1;
@@ -288,7 +350,6 @@ public class Application extends Controller {
 							}
 							bh.save();
 						}
-
 					}
 				}
 			}
@@ -318,7 +379,8 @@ public class Application extends Controller {
 				blackMarketChampion.save();
 			}
 
-			Champion champion = Champion.find("byChampion_idAndRegionTotal", champId, region).first();
+			Champion champion = Champion.find("byChampion_idAndRegionTotal",
+					champId, region).first();
 
 			if (champion == null) {
 				champion = new Champion();
