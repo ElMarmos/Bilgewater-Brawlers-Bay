@@ -412,6 +412,8 @@ html body .app-champions-index .championResume .content .itemList .itemInfo:nth-
 }
 html body .app-champions-index .championResume .content .itemList .itemInfo {
   margin: 10px 0;
+  padding-left: 32%;
+  text-align: left;
 }
 html body .app-champions-index .championResume .content .itemList .itemInfo .itemIcon {
   border-radius: 50%;
@@ -490,6 +492,57 @@ html body .app-champions-index .champions-grid .champion .champion-img .name {
   position: absolute;
   transition: all 0.4s ease;
   width: 100%;
+}
+html body .app-items-index .dropdownHolder {
+  text-align: center;
+}
+html body .app-items-index .dropdownHolder .dropdown {
+  display: inline-block;
+}
+html body .app-items-index .row {
+  margin-top: 30px;
+}
+html body .app-items-index .row div {
+  text-align: center;
+}
+html body .app-items-index .row .itemHolder {
+  background: rgba(0,0,0,0.4);
+  border-radius: 5px;
+  display: inline-block;
+  margin: 10px 0;
+  min-width: 208px;
+  padding: 10px;
+}
+html body .app-items-index .row .itemHolder img {
+  border: 1px solid #adcbe7;
+  border-radius: 5px;
+}
+html body .app-items-index .row .itemHolder .info {
+  margin-top: 5px;
+}
+html body .app-items-index .row .itemHolder .info .name {
+  color: #e7b53d;
+  text-transform: uppercase;
+}
+html body .app-about-index .section {
+  background: rgba(0,0,0,0.8);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+html body .app-about-index .section .image {
+  margin-top: 15px;
+  text-align: center;
+}
+html body .app-about-index .section .image img {
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+html body .app-about-index .section .image .img1 {
+  height: 800px;
+}
+html body .app-about-index .section .image .img2 {
+  width: 200px;
 }
 html body .footer {
   background-color: rgba(255,255,255,0.05);

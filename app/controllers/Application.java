@@ -426,7 +426,7 @@ public class Application extends Controller {
 					if (j == 3) {
 						blackMarketChampion.puppeteer++;
 						if (winner)
-							blackMarketChampion.staff_of_flowing_water_win++;
+							blackMarketChampion.puppeteer_win++;
 					}
 					if (j == 4) {
 						blackMarketChampion.martyrs_gambit++;
@@ -502,7 +502,7 @@ public class Application extends Controller {
 					if (j == 3) {
 						blackMarketChampion.puppeteer++;
 						if (winner)
-							blackMarketChampion.staff_of_flowing_water_win++;
+							blackMarketChampion.puppeteer_win++;
 					}
 					if (j == 4) {
 						blackMarketChampion.martyrs_gambit++;
@@ -578,7 +578,7 @@ public class Application extends Controller {
 					if (j == 3) {
 						blackMarketChampion.puppeteer++;
 						if (winner)
-							blackMarketChampion.staff_of_flowing_water_win++;
+							blackMarketChampion.puppeteer_win++;
 					}
 					if (j == 4) {
 						blackMarketChampion.martyrs_gambit++;
@@ -654,7 +654,7 @@ public class Application extends Controller {
 					if (j == 3) {
 						blackMarketChampion.puppeteer++;
 						if (winner)
-							blackMarketChampion.staff_of_flowing_water_win++;
+							blackMarketChampion.puppeteer_win++;
 					}
 					if (j == 4) {
 						blackMarketChampion.martyrs_gambit++;
@@ -730,7 +730,7 @@ public class Application extends Controller {
 					if (j == 3) {
 						blackMarketChampion.puppeteer++;
 						if (winner)
-							blackMarketChampion.staff_of_flowing_water_win++;
+							blackMarketChampion.puppeteer_win++;
 					}
 					if (j == 4) {
 						blackMarketChampion.martyrs_gambit++;
@@ -806,7 +806,7 @@ public class Application extends Controller {
 					if (j == 3) {
 						blackMarketChampion.puppeteer++;
 						if (winner)
-							blackMarketChampion.staff_of_flowing_water_win++;
+							blackMarketChampion.puppeteer_win++;
 					}
 					if (j == 4) {
 						blackMarketChampion.martyrs_gambit++;
