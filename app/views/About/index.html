@@ -5,8 +5,41 @@
 
 		<div class="view-title">
 			<h1 class="title-text">About</h1>
-			<p class="legend">Here you can <span>select a champion</span> to see stats related to the champion, items of the Black Market he bought, pick rate, win rate and more.</p>
+			<p class="legend">Here we <span>explain the process</span> we did to develope this awesome app :p.</p>
 		</div>
+
+		<div class="divider"></div>
+
+		<div class="section">
+			1. We think what can we do with all the data provided for this API Challenge and at the end, we decided to show different stats from all the regions. From a resume of each region to champions, black market's items and brawlers.
+			<br>
+			<br>
+			2. Then we designed the database that was going to store all the data we need to do the calculations for the stats that we wanted to show and selected the framework where we developed the app. We selected Play Framework.
+
+			<div class="image">
+				<img class="img1" src="@{'public/images/DatabaseModel.png'}">
+				<img class="img2" src="https://www.playframework.com/assets/images/logos/play_reverse.svg">
+			</div>
+
+			3. Next we splitted work, one of us was in charge to do the methods to retrieve all the data using riot's API and fill our the database, and the other designed and developed the app views. As you can appreciate we decided to use some of the Bilgewater: Burning Tides art.
+			<br>
+			<br>
+			4. In the process we had a lot of problems. The first one was how to get all the data from riot's servers fast with our limited API keys, so we let our computers on for an entire night processing match by match, saving the data in our database. It took forever so we stopped and decided to attack the problem from another angle.
+			<br>
+			<br>
+			5. Riot provided us with a production API Key, we used it to get all the matches json files and saved them locally (in case of errors so we don't need to start again all the process). We downloaded a total of 100.000 json files (Around 16Gb of data).
+			<div class="image">
+				<img src="@{'public/images/DownloadedData.jpg'}">
+				<img src="@{'public/images/Archivos.png'}">
+			</div>
+			6. We wanted to show how much Krakens every region earned, and it was impossible because the match json doesn't have a register of it, but then, we found that in the timeline there was a register when a participant buyed a brawler or an upgrade and made the calculations based on Krakends spended.
+			<div class="image">
+				<img src="@{'public/images/Krakens.jpg'}">
+			</div>
+
+			Well, this is like a little resume of what we did to develop this app, we dedicated a lot of time and effort to make something visually enjoyable with relevant stats about the event. We hope you like it!
+		</div>
+
 	</div>
 </div>
 

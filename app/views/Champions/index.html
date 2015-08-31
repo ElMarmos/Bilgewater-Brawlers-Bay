@@ -1,23 +1,19 @@
 #{extends 'main.html' /}
-
 <div class="loading">
 	<div class="centered">
 		<img class="spinner" src="@{'public/images/spinner.svg'}">
 	</div>
 </div>
-
 <div class="app-champions-index">
 	<div class="container">
-
 		<div class="view-title">
 			<h1 class="title-text">Champion Stats</h1>
 			<p class="legend">Here you can <span>select a champion</span> to see stats related to the champion, items of the Black Market he bought, pick rate, win rate and more.</p>
 		</div>
+		
+		<div class="divider"></div>
 
-		<div class="divider">
-			<a name="aqui"></a>
-		</div>
-
+		<a name="aqui"></a>
 		<div class="championResume">
 			<div class="header">
 				<div id="crImg">
@@ -74,14 +70,13 @@
 					</div>
 				</div>
 				<div class="contentDivider"></div>
-				
 				<div class="buttonRegion">
 					<div class="dropdown">
 						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							WORLD
+							NA
 						</button>
-						<ul id="dropDown1" class="dropdown-menu" aria-labelledby="dropdownMenu1">
-							<li><a href="#">WORLD</a></li>
+						<ul id="dropDown1" class="dropdown-menu" aria-labelledby="dropdownMenu1">                            
+							<li><a href="#">BR</a></li>
 							<li><a href="#">EUNE</a></li>
 							<li><a href="#">EUW</a></li>
 							<li><a href="#">KR</a></li>
@@ -94,35 +89,34 @@
 						</ul>
 					</div>
 				</div>
-
 				<div class="row">
 					<div class="col-md-6">
 						<div class="itemList uno">
 							<h4>Relevant Black Market's Items Buy Rate</h4>
 							<div class="itemInfo">
-								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<img src="@{'public/images/3652.png'}" class="itemIcon" id="blackMarketBuyIcon1">
 								<div class="itemData">
 									<div class="center">
-										<div class="name">Name: <span>Typoon Claws</span></div>
-										<div class="rate">Buy Rate: <span>65,3%</span></div>
+										<div class="name">Name: <span id="blackMarketBuyName1">---</span></div>
+										<div class="rate">Buy Rate: <span id="blackMarketBuyRate1">---</span></div>
 									</div>
 								</div>
 							</div>
 							<div class="itemInfo">
-								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<img src="@{'public/images/3652.png'}" class="itemIcon" id="blackMarketBuyIcon2">
 								<div class="itemData">
 									<div class="center">
-										<div class="name">Name: <span>Typoon Claws</span></div>
-										<div class="rate">Buy Rate: <span>65,3%</span></div>
+										<div class="name">Name: <span id="blackMarketBuyName2">---</span></div>
+										<div class="rate">Buy Rate: <span id="blackMarketBuyRate2">---</span></div>
 									</div>
 								</div>
 							</div>
 							<div class="itemInfo">
-								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<img src="@{'public/images/3652.png'}" class="itemIcon" id="blackMarketBuyIcon3">
 								<div class="itemData">
 									<div class="center">
-										<div class="name">Name: <span>Typoon Claws</span></div>
-										<div class="rate">Buy Rate: <span>65,3%</span></div>
+										<div class="name">Name: <span id="blackMarketBuyName3">---</span></div>
+										<div class="rate">Buy Rate: <span id="blackMarketBuyRate3">---</span></div>
 									</div>
 								</div>
 							</div>
@@ -132,29 +126,29 @@
 						<div class="itemList">
 							<h4>Relevant Black Market's Items Win Rate</h4>
 							<div class="itemInfo">
-								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<img src="@{'public/images/3652.png'}" class="itemIcon" id="blackMarketWinIcon1">
 								<div class="itemData">
 									<div class="center">
-										<div class="name">Name: <span>Typoon Claws</span></div>
-										<div class="rate">Win Rate: <span>65,3%</span></div>
+										<div class="name">Name: <span id="blackMarketWinName1">---</span></div>
+										<div class="rate">Win Rate: <span id="blackMarketWinRate1">---</span></div>
 									</div>
 								</div>
 							</div>
 							<div class="itemInfo">
-								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<img src="@{'public/images/3652.png'}" class="itemIcon" id="blackMarketWinIcon2">
 								<div class="itemData">
 									<div class="center">
-										<div class="name">Name: <span>Typoon Claws</span></div>
-										<div class="rate">Win Rate: <span>65,3%</span></div>
+										<div class="name">Name: <span id="blackMarketWinName2">---</span></div>
+										<div class="rate">Win Rate: <span id="blackMarketWinRate2">---</span></div>
 									</div>
 								</div>
 							</div>
 							<div class="itemInfo">
-								<img src="@{'public/images/3652.png'}" class="itemIcon">
+								<img src="@{'public/images/3652.png'}" class="itemIcon" id="blackMarketWinIcon3">
 								<div class="itemData">
 									<div class="center">
-										<div class="name">Name: <span>Typoon Claws</span></div>
-										<div class="rate">Win Rate: <span>65,3%</span></div>
+										<div class="name">Name: <span id="blackMarketWinName3">---</span></div>
+										<div class="rate">Win Rate: <span id="blackMarketWinRate3">---</span></div>
 									</div>
 								</div>
 							</div>
@@ -163,60 +157,69 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="divider di2"></div>
-
 		<div class="champions-grid">
 			#{list items:campeones, as: 'campeon'}
-			<a class="champion" val="${campeon.id}" href="#">
+			<a class="champion" val="${campeon.champion_id}" href="#">
 				<div class="champion-img" style="background-image: url('${campeon.loading}');">
 					<div class="name">${campeon.name}</div>
 				</div>
 			</a>
 			#{/list}
 		</div>
+
+		
+
+
 	</div>
 </div>
-
 <script>
-
 	$('.championResume').hide();
 	$('.di2').hide();
 
 	var campeonSeleccionado = "";
 
-	function scrollToAnchor(aid){
-		var aTag = $("a[name='"+ aid +"']");
-		$('html,body').animate({scrollTop: aTag.offset().top},'slow');
+
+	function scrollToAnchor(aid) {
+		var aTag = $("a[name='" + aid + "']");
+		$('html,body').animate({
+			scrollTop: aTag.offset().top
+		}, 'slow');
 	}
 
 	$('.champion').click(function(event) {
 		event.preventDefault();
-		
+		scrollToAnchor('aqui');
 		var champ = $(this).attr('val');
-		campeonSeleccionado = champ;
+		campeonSeleccionado = champ;   
 		var name = $("div > div", this).text();
-		
+		$('.championResume').slideDown();
+		$('.di2').slideDown();
+
 		$.ajax({
 			url: '@{Champions.getChampionResume}',
 			type: 'POST',
-			data: {id: champ},
+			data: {
+				id: champ
+			},
 		})
 		.done(function(data) {
 			var champ_data = JSON.parse(data);
 			$('#crName').text(name);
 			$('#crImg').css({
-				'background': 'url('+champ_data.square+')',
+				'background': 'url(' + champ_data.square + ')',
 				'background-position': 'center',
 				'background-size': '90px 90px'
 			});;
 			$('#kills').text(champ_data.kills);
 			$('#deaths').text(champ_data.deaths);
 			$('#assists').text(champ_data.assists);
-			$('#win-rate').text(champ_data.wins+'%');
-			$('#play-rate').text(champ_data.play+'%');
+			$('#win-rate').text(champ_data.wins + '%');
+			$('#play-rate').text(champ_data.play + '%');
 			setBrawlersGraphBuyRate(champ_data.razorfins, champ_data.ironbacks, champ_data.plundercrabs, champ_data.ocklepods);
-			setBrawlersGraphWinRate(champ_data.razorfins_win,champ_data.ironbacks_win,champ_data.plundercrabs_win,champ_data.ocklepods_win);
+			setBrawlersGraphWinRate(champ_data.razorfins_win, champ_data.ironbacks_win, champ_data.plundercrabs_win, champ_data.ocklepods_win);
+			setBlackMarketItemsBuyRate(campeonSeleccionado, "NA");
+			setBlackMarketItemsWinRate(campeonSeleccionado, "NA");
 		});
 
 		scrollToAnchor('aqui');
@@ -225,91 +228,160 @@
 
 	});
 
-	function setBrawlersGraphBuyRate(razorfins, ironbacks, plundercrabs, ocklepods){
-		var data = [
-		{
-			value: razorfins,
-			color:"#8D0B1D",
-			highlight: "#D1475A",
-			label: "Razorfins"
-		},
-		{
-			value: ironbacks,
-			color: "#D7BC8D",
-			highlight: "#F4E3C5",
-			label: "Ironbacks"
-		},
-		{
-			value: plundercrabs,
-			color: "#E8A549",
-			highlight: "#F4C07A",
-			label: "Plundercrabs"
-		},
-		{
-			value: ocklepods,
-			color: "#45EEA4",
-			highlight: "#8FF6C9",
-			label: "Ocklepods"
-		}
-
-		];
-
-		var ctx = $("#brawlersChart1").get(0).getContext("2d");
-		var polarAreaChart = new Chart(ctx).Pie(data, {
-			segmentStrokeColor: "#fff",
-			segmentStrokeWidth : 1,
-			scaleLineColor: "rgba(255,255,255,0.2)"
-		});
+function setBrawlersGraphBuyRate(razorfins, ironbacks, plundercrabs, ocklepods) {
+	var data = [{
+		value: razorfins,
+		color: "rgba(141,11,29,.75)",
+		highlight: "#D1475A",
+		label: "Razorfins"
+	}, {
+		value: ironbacks,
+		color: "rgba(215,188,141,.75)",
+		highlight: "#F4E3C5",
+		label: "Ironbacks"
+	}, {
+		value: plundercrabs,
+		color: "rgba(232,165,73,.75)",
+		highlight: "#F4C07A",
+		label: "Plundercrabs"
+	}, {
+		value: ocklepods,
+		color: "rgba(69,238,164,.75)",
+		highlight: "#8FF6C9",
+		label: "Ocklepods"
 	}
 
-	function setBrawlersGraphWinRate(razorfins, ironbacks, plundercrabs, ocklepods){
-		var data = [
-		{
-			value: razorfins,
-			color:"#8D0B1D",
-			highlight: "#D1475A",
-			label: "Razorfins"
-		},
-		{
-			value: ironbacks,
-			color: "#D7BC8D",
-			highlight: "#F4E3C5",
-			label: "Ironbacks"
-		},
-		{
-			value: plundercrabs,
-			color: "#E8A549",
-			highlight: "#F4C07A",
-			label: "Plundercrabs"
-		},
-		{
-			value: ocklepods,
-			color: "#45EEA4",
-			highlight: "#8FF6C9",
-			label: "Ocklepods"
-		}
+	];
 
-		];
+	$('#brawlersChart1').replaceWith('<canvas class="polarChart" id="brawlersChart1"></canvas>');
+	var ctx = $("#brawlersChart1").get(0).getContext("2d");
+	var polarAreaChart = new Chart(ctx).Pie(data, {
+		segmentStrokeColor: "#fff",
+		segmentStrokeWidth: 1,
+		scaleLineColor: "rgba(255,255,255,0.2)"
+	});
+}
 
-		var ctx1 = $("#brawlersChart2").get(0).getContext("2d");
-		var polarAreaChart1 = new Chart(ctx1).PolarArea(data, {
-			segmentStrokeColor: "#fff",
-			segmentStrokeWidth : 1,
-			scaleLineColor: "rgba(255,255,255,0.2)"
-		});
+function setBrawlersGraphWinRate(razorfins, ironbacks, plundercrabs, ocklepods) {
+	var data = [{
+		value: razorfins,
+		color: "rgba(141,11,29,.75)",
+		highlight: "#D1475A",
+		label: "Razorfins"
+	}, {
+		value: ironbacks,
+		color: "rgba(215,188,141,.75)",
+		highlight: "#F4E3C5",
+		label: "Ironbacks"
+	}, {
+		value: plundercrabs,
+		color: "rgba(232,165,73,.75)",
+		highlight: "#F4C07A",
+		label: "Plundercrabs"
+	}, {
+		value: ocklepods,
+		color: "rgba(69,238,164,.75)",
+		highlight: "#8FF6C9",
+		label: "Ocklepods"
 	}
 
-	$(window).load(function() {
-		$(this).scrollTop(0);
-		$('.loading').slideUp('600');
+	];
+	$('#brawlersChart2').replaceWith('<canvas class="polarChart" id="brawlersChart2"></canvas>');
+	var ctx1 = $("#brawlersChart2").get(0).getContext("2d");
+	var polarAreaChart1 = new Chart(ctx1).Doughnut(data, {
+		segmentStrokeColor: "#fff",
+		segmentStrokeWidth: 1,
+		scaleLineColor: "rgba(255,255,255,0.2)"
+	});
+}
+
+function setBlackMarketItemsBuyRate(champ, region) {
+
+
+	$.ajax({
+		url: '@{Champions.getRelevantBMItemBuy}',
+		type: 'POST',
+		data: {
+			id: champ,
+			name: region
+		},
+	})
+	.done(function(data) {
+		var response = JSON.parse(data);
+
+		
+		$('#blackMarketBuyIcon1').attr("src", "/public/images/" + response[0].id + ".png");
+		$('#blackMarketBuyName1').text(response[0].name);
+		$('#blackMarketBuyRate1').text(response[0].count.toFixed(2)+"%");
+
+		$('#blackMarketBuyIcon2').attr("src", "/public/images/" + response[1].id + ".png");
+		$('#blackMarketBuyName2').text(response[1].name);
+		$('#blackMarketBuyRate2').text(response[1].count.toFixed(2)+"%");
+
+		$('#blackMarketBuyIcon3').attr("src", "/public/images/" + response[2].id + ".png");
+		$('#blackMarketBuyName3').text(response[2].name);
+		$('#blackMarketBuyRate3').text(response[2].count.toFixed(2)+"%");
+
+
+
+	});
+}
+
+function setBlackMarketItemsWinRate(champ, region) {
+
+
+	$.ajax({
+		url: '@{Champions.getRelevantBMItemWin}',
+		type: 'POST',
+		data: {
+			id: champ,
+			name: region
+		},
+	})
+	.done(function(data) {
+		var response = JSON.parse(data);
+
+
+		$('#blackMarketWinIcon1').attr("src", "/public/images/" + response[0].id + ".png");
+		$('#blackMarketWinName1').text(response[0].name);
+		$('#blackMarketWinRate1').text(response[0].count.toFixed(2)+"%");
+
+		$('#blackMarketWinIcon2').attr("src", "/public/images/" + response[1].id + ".png");
+		$('#blackMarketWinName2').text(response[1].name);
+		$('#blackMarketWinRate2').text(response[1].count.toFixed(2)+"%");
+
+		$('#blackMarketWinIcon3').attr("src", "/public/images/" + response[2].id + ".png");
+		$('#blackMarketWinName3').text(response[2].name);
+		$('#blackMarketWinRate3').text(response[2].count.toFixed(2)+"%");
+
+
+
 	});
 
-	(function(){
-		$('.tab3').addClass('selected');
 
-		$('.champion').addClass("hidden").viewportChecker({
-			classToAdd: 'visible animated fadeIn',
-			offset: 100
-		});
-	})();
+}
+
+$('#dropDown1 li a').click(function(event) {
+	event.preventDefault();
+	var selected = $(this).text();    
+	$('#dropdownMenu1').text(selected);
+	setBlackMarketItemsBuyRate(campeonSeleccionado, selected);
+	setBlackMarketItemsWinRate(campeonSeleccionado, selected);
+});
+
+
+
+$(window).load(function() {
+	$(this).scrollTop(0);
+	$('.loading').slideUp('600');
+});
+
+(function() {
+	$('.tab3').addClass('selected');
+
+	$('.champion').addClass("hidden").viewportChecker({
+		classToAdd: 'visible animated fadeIn',
+		offset: 100
+	});
+})();
 </script>

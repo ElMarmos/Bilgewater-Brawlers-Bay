@@ -1,15 +1,231 @@
 #{extends 'main.html' /}
-
+<div class="loading">
+	<div class="centered">
+		<img class="spinner" src="@{'public/images/spinner.svg'}">
+	</div>
+</div>
 <div class="app-items-index">
 	<div class="container">
 
 		<div class="view-title">
 			<h1 class="title-text">Black Market Stats</h1>
-			<p class="legend">Here you can <span>select a champion</span> to see stats related to the champion, items of the Black Market he bought, pick rate, win rate and more.</p>
+			<p class="legend">Here you can <span>watch stats from all the items</span> in the Black Market and filter them by region.</p>
 		</div>
+
+		<div class="divider"></div>
+		
+		<div class="dropdownHolder">
+			<div class="dropdown">
+				<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					NA
+				</button>
+				<ul id="dropDown1" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a href="#">BR</a></li>
+					<li><a href="#">EUNE</a></li>
+					<li><a href="#">EUW</a></li>
+					<li><a href="#">KR</a></li>
+					<li><a href="#">LAN</a></li>
+					<li><a href="#">LAS</a></li>
+					<li><a href="#">NA</a></li>
+					<li><a href="#">OCE</a></li>
+					<li><a href="#">TR</a></li>
+					<li><a href="#">RU</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-4">
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3652.png'}">
+						<div class="info" id="3652">
+							<div class="name">Typhoon Claws</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3924.png'}">
+						<div class="info" id="3924">
+							<div class="name">Flesheater</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3150.png'}">
+						<div class="info" id="3150">
+							<div class="name">Mirage Blade</span></div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3911.png'}">
+						<div class="info" id="3911">
+							<div class="name">Martyr's Gambit</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3742.png'}">
+						<div class="info" id="3742">
+							<div class="name">Dead Man's Plate</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3433.png'}">
+						<div class="info" id="3433">
+							<div class="name">Lost Chapter</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3430.png'}">
+						<div class="info" id="3430">
+							<div class="name">Rite of Ruin</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3431.png'}">
+						<div class="info" id="3431">
+							<div class="name">Netherside Grimoire</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3434.png'}">
+						<div class="info" id="3434">
+							<div class="name">Pox Arcana</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3829.png'}">
+						<div class="info" id="3829">
+							<div class="name">Trickster's Glass</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3844.png'}">
+						<div class="info" id="3844">
+							<div class="name">Murksphere</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3841.png'}">
+						<div class="info" id="3841">
+							<div class="name">Swindler's Orb</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3840.png'}">
+						<div class="info" id="3840">
+							<div class="name">Globe of Trust</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3744.png'}">
+						<div class="info" id="3744">
+							<div class="name">Staff of Flowing Water</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="itemHolder">
+						<img src="@{'public/images/3745.png'}">
+						<div class="info" id="3745">
+							<div class="name">Puppeteer</div>
+							<div class="buyRate">Buy Rate: <span>0</span></div>
+							<div class="winRate">Win Rate: <span>0</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 </div>
 
 <script>
 	$('.tab4').addClass('selected');
+
+	var data;
+
+	$.ajax({
+		url: '@{Items.getAllItemsInfo}',
+		type: 'POST',
+		dataType: 'json'
+	})
+	.done(function(info) {
+		$('.loading').slideUp('600');
+		data = info;
+		setItemsRegion("NA");
+	});
+
+	function setItemsRegion(region){
+		var inf = data[region];
+		var keys = Object.keys(inf);
+		for(key in keys){
+			var llave = keys[key];
+			$('#'+llave+' .buyRate span').text(inf[llave]["bR"].toFixed(2)+"%");
+			$('#'+llave+' .winRate span').text(inf[llave]["wR"].toFixed(2)+"%");
+		}
+	}
+
+	$('#dropDown1 li a').click(function(event) {
+		event.preventDefault();
+		var selected = $(this).text();    
+		$('#dropdownMenu1').text(selected);
+		setItemsRegion(selected);
+	});
 </script>
