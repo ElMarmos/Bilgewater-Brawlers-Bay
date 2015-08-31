@@ -122,7 +122,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -205,7 +205,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -288,7 +288,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -371,7 +371,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -454,7 +454,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -537,7 +537,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -620,7 +620,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -703,7 +703,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -786,7 +786,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -869,7 +869,7 @@
 							</table>
 							<div class="rrt-divider"></div>
 							<div class="regionHeaderOptions">
-								<h4>KDA Compared to </h4>
+								<h4><span>KDA</span> Compared to </h4>
 								<div class="dropdown">
 									<button type="button" id="dropdownMenu10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 										WORLD
@@ -1180,6 +1180,9 @@ $('#dropDownBR li a').click(function(event) {
 	var regionAct = globalData[1];
 	var regionComp = globalData[js[sel]];
 
+	$('.ch1').empty();
+	$('.ch1').append('<canvas class="radarChart" id="chart1" height="300px" width="400px"></canvas>');
+
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
 		datasets: [
@@ -1216,6 +1219,9 @@ $('#dropDownEUNE li a').click(function(event) {
 	$('#dropdownMenu2').text(sel);
 	var regionAct = globalData[2];
 	var regionComp = globalData[js[sel]];
+
+	$('.ch2').empty();
+	$('.ch2').append('<canvas class="radarChart" id="chart2" height="300px" width="400px"></canvas>');
 
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
@@ -1254,6 +1260,9 @@ $('#dropDownEUW li a').click(function(event) {
 	var regionAct = globalData[3];
 	var regionComp = globalData[js[sel]];
 
+	$('.ch3').empty();
+	$('.ch3').append('<canvas class="radarChart" id="chart3" height="300px" width="400px"></canvas>');
+
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
 		datasets: [
@@ -1290,6 +1299,9 @@ $('#dropDownKR li a').click(function(event) {
 	$('#dropdownMenu4').text(sel);
 	var regionAct = globalData[4];
 	var regionComp = globalData[js[sel]];
+
+	$('.ch4').empty();
+	$('.ch4').append('<canvas class="radarChart" id="chart4" height="300px" width="400px"></canvas>');
 
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
@@ -1328,6 +1340,9 @@ $('#dropDownLAN li a').click(function(event) {
 	var regionAct = globalData[5];
 	var regionComp = globalData[js[sel]];
 
+	$('.ch5').empty();
+	$('.ch5').append('<canvas class="radarChart" id="chart5" height="300px" width="400px"></canvas>');
+
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
 		datasets: [
@@ -1364,6 +1379,9 @@ $('#dropDownLAS li a').click(function(event) {
 	$('#dropdownMenu6').text(sel);
 	var regionAct = globalData[6];
 	var regionComp = globalData[js[sel]];
+
+	$('.ch6').empty();
+	$('.ch6').append('<canvas class="radarChart" id="chart6" height="300px" width="400px"></canvas>');
 
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
@@ -1402,6 +1420,9 @@ $('#dropDownNA li a').click(function(event) {
 	var regionAct = globalData[7];
 	var regionComp = globalData[js[sel]];
 
+	$('.ch7').empty();
+	$('.ch7').append('<canvas class="radarChart" id="chart7" height="300px" width="400px"></canvas>');
+
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
 		datasets: [
@@ -1438,6 +1459,9 @@ $('#dropDownOCE li a').click(function(event) {
 	$('#dropdownMenu8').text(sel);
 	var regionAct = globalData[8];
 	var regionComp = globalData[js[sel]];
+
+	$('.ch8').empty();
+	$('.ch8').append('<canvas class="radarChart" id="chart8" height="300px" width="400px"></canvas>');
 
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
@@ -1476,6 +1500,9 @@ $('#dropDownTR li a').click(function(event) {
 	var regionAct = globalData[9];
 	var regionComp = globalData[js[sel]];
 
+	$('.ch9').empty();
+	$('.ch9').append('<canvas class="radarChart" id="chart9" height="300px" width="400px"></canvas>');
+
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
 		datasets: [
@@ -1512,6 +1539,9 @@ $('#dropDownRU li a').click(function(event) {
 	$('#dropdownMenu10').text(sel);
 	var regionAct = globalData[10];
 	var regionComp = globalData[js[sel]];
+
+	$('.ch10').empty();
+	$('.ch10').append('<canvas class="radarChart" id="chart10" height="300px" width="400px"></canvas>');
 
 	var data = {
 		labels: ["Avg Kills", "Avg Deaths", "Avg Assists"],
